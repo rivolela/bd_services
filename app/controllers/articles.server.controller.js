@@ -28,6 +28,7 @@ exports.create = function(req,res){
 	});
 };
 
+
 exports.list = function(req,res){
 	Article.find().sort('-created').populate('creator','firstName last name fullName').exec(function(err,articles){
 		if(err){
