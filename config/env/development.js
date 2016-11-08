@@ -1,6 +1,7 @@
 module.exports = {
 	// Development configuration options
-	db:'mongodb://localhost/mean-book',
+	//db:'mongodb://localhost/mean-book',
+	db:'mongodb://127.0.0.1:27017/bd_dev',
 	sessionSecret:'developmentSessionSecret',
 	facebook:{
 		clientID:'101029623673783',
