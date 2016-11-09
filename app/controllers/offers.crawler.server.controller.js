@@ -94,9 +94,18 @@ exports.getOffersBD = function(query,next){
 
 exports.list = function(req,res){
 
-	var query = {};
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
+    var ean = String(req.params.ean);
+    var query;
+
+    //if ean is null or empty, set url default
+	if(ean == 0){
+		query = {};
+	}else{
+		query = {ean:ean};
+	}
+    
 
     console.log(req.params);
 
