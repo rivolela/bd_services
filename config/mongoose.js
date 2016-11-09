@@ -15,9 +15,9 @@ module.exports = function(){
 		}	
 	});
 
-	require('../app/models/user.server.model');
-	require('../app/models/article.server.model');
+	// require('../app/models/article.server.model');
 	require('../app/models/offer.crawler.server.model');
+	require('../app/models/review.server.model');
 
 	return db;
 };
