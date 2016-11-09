@@ -1,8 +1,19 @@
 module.exports = {
-	//db: 'mongodb://localhost/mean-book-test',
+
+	// Test configuration options
 	db:'mongodb://127.0.0.1:27017/bd_test',
 	sessionSecret: 'testSessionSecret',
+	connectid:'43EEF0445509C7205827',
 	viewEngine: 'ejs',
+
+	// Crawler Options 
+	// programs ids
+	// 12011 : Walmart BR"
+	// 13212 : Ricardo Eletro BR
+	// 16588 : Lojas Colombo BR
+	// 12781 : Ponto Frio
+	programs:'12011,13212,16588,12781',
+
 	facebook:{
 		clientID:'101029623673783',
 		clientSecret:'048b2d74eec461e2647dcce53194fa9b',

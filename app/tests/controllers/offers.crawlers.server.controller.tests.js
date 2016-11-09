@@ -8,27 +8,29 @@ var offer_crawler;
 
 describe('Offers Crawlers Controller Unit Tests:',function(){
 
-	describe('Testing the get methods',function(){
 
-		before(function(done){
-			offer_crawler = new Offer({
-				urlOffer: '489238/sk',
-				name: 'Fogão Chef Gourmet Disney Princesa - Xalingo',
-				merchantProductId: '489238',
-				ean: '7895500723961',
-				url: 'http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[489238/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]',
-				advertiser: 'Walmart BR',
-				manufacturer: 'Safanelli'
-			});
-
-			offer_crawler.save(function(err){
-				console.log(err);
-				done();
-			});
+	before(function(done){
+		offer_crawler = new Offer({
+			urlOffer: '489238/sk',
+			name: 'Fogão Chef Gourmet Disney Princesa - Xalingo',
+			merchantProductId: '489238',
+			ean: '7895500723961',
+			url: 'http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[489238/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]',
+			advertiser: 'Walmart BR',
+			manufacturer: 'Safanelli'
 		});
 
+		offer_crawler.save(function(err){
+			console.log(err);
+			done();
+		});
+	});
+
+
+	describe('Testing the get methods',function(){
+
 		it('Should be able to get the list of offers crawlers',function(done){
-			request(app).get('/api/offers/crawler/list/page/1/limit/10')
+			request(app).get('/api/offers/crawler/page/1/limit/10')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)
@@ -41,13 +43,13 @@ describe('Offers Crawlers Controller Unit Tests:',function(){
 			});
 		});
 
+	});
 
-		after(function(done){
-			Offer.remove(function(){
-				done();
-			});
+
+	after(function(done){
+		Offer.remove(function(){
+			done();
 		});
-
 	});
 
 		// it('Should be able to get specific article',function(done){

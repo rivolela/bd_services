@@ -37,6 +37,7 @@ module.exports = function(){
 	//require('../app/routes/users.server.routes.js')(app);
 	//require('../app/routes/articles.server.routes.js')(app);
 	require('../app/routes/offers.crawler.server.routes.js')(app);
+	require('../app/routes/zanox.server.routes.js')(app);
 		
 	return app;
 };
