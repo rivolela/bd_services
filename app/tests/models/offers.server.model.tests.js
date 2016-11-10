@@ -1,7 +1,7 @@
 var app = require('../../../server.js'),
 	should = require('should'),
 	mongoose = require('mongoose'),
-	Offer = mongoose.model('Offer_Crawler');
+	Offer = mongoose.model('Offer');
 
 var offer_crawler;
 

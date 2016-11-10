@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	Offer = mongoose.model('Offer_Crawler');
+	Offer = mongoose.model('Offer');
 
 
 var getErrorMessage = function(err){
@@ -96,18 +96,7 @@ exports.list = function(req,res){
 
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
-    var ean = String(req.params.ean);
-    var query;
-
-    //if ean is null or empty, set url default
-	if(ean == 0){
-		query = {};
-	}else{
-		query = {ean:ean};
-	}
-    
-
-    console.log(req.params);
+    var query = {};
 
 	var options = {
 	  //select: 'advertiser date',
@@ -134,6 +123,85 @@ exports.list = function(req,res){
 };
 
 
+
+exports.listByEan = function(req,res){
+
+	var page = Number(req.params.page || 0);
+    var limit = Number(req.params.limit || 10);
+    var ean = String(req.params.ean);
+    var query;
+
+    //if ean is null or empty, set url default
+	if(ean == 0){
+		query = {};
+	}else{
+		query = {ean:ean};
+	}
+    
+
+	var options = {
+	  //select: 'advertiser date',
+	  // sort: { 
+	  // 	date: 'asc'
+	  // },
+	  //lean: true,
+	  //offset: 10, 
+	  page: page,
+	  limit: limit
+	};
+
+
+	Offer.paginate(query,options,function(err, result) {
+		if(err){
+			console.log(err);
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			res.json(result);
+		}
+	});
+};
+
+
+exports.listByCategory = function(req,res){
+
+	var page = Number(req.params.page || 0);
+    var limit = Number(req.params.limit || 10);
+    var category = String(req.params.category);
+    var query;
+
+    //if ean is null or empty, set url default
+	if(category == 0){
+		query = {};
+	}else{
+		query = {categoryBD:category};
+	}
+    
+
+	var options = {
+	  //select: 'advertiser date',
+	  // sort: { 
+	  // 	date: 'asc'
+	  // },
+	  //lean: true,
+	  //offset: 10, 
+	  page: page,
+	  limit: limit
+	};
+
+
+	Offer.paginate(query,options,function(err, result) {
+		if(err){
+			console.log(err);
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			res.json(result);
+		}
+	});
+};
 
 
 

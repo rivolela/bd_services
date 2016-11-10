@@ -1,7 +1,7 @@
 var zanox = require('../../app/controllers/zanox.server.controller');
 
 module.exports = function(app){
-	app.route('/api/offers/query/:query/page/:page/items/:items')
+	app.route('/api/offers/zn/query/:query/page/:page/items/:items')
 	.get(zanox.list);
 
 	//.post(users.requireLogin,articles.create);

@@ -31,7 +31,7 @@ module.exports = function(){
 	app.set('view engine','ejs');
 	app.use(flash());
 
-	require('../app/routes/offers.crawler.server.routes.js')(app);
+	require('../app/routes/offers.server.routes.js')(app);
 	require('../app/routes/zanox.server.routes.js')(app);
 	require('../app/routes/reviews.server.routes.js')(app);
 		

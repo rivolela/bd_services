@@ -50,6 +50,37 @@ exports.list = function(req,res){
 };
 
 
+exports.listByCategory = function(req,res){
+
+	var category = String(req.params.category);
+	var page = Number(req.params.page || 0);
+    var limit = Number(req.params.limit || 10);
+
+    var query = {categoryBD:category};
+
+	var options = {
+	  //select: 'advertiser date',
+	  // sort: { 
+	  // 	date: 'asc'
+	  // },
+	  //lean: true,
+	  //offset: 10, 
+	  page: page,
+	  limit: limit
+	};
+
+
+	Review.paginate(query,options,function(err, result) {
+		if(err){
+			console.log(err);
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			res.json(result);
+		}
+	});
+};
 
 
 

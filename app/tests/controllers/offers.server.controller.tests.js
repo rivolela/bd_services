@@ -2,11 +2,11 @@ var app = require('../../../server.js'),
 	request = require('supertest'),
 	should = require('should'),
 	mongoose = require('mongoose'),
-	Offer = mongoose.model('Offer_Crawler');
+	Offer = mongoose.model('Offer');
 
 var offer_crawler;
 
-describe('Offers Crawlers Controller Unit Tests:',function(){
+describe('Offers BD Controller Unit Tests:',function(){
 
 
 	before(function(done){
@@ -29,8 +29,23 @@ describe('Offers Crawlers Controller Unit Tests:',function(){
 
 	describe('Testing the get methods',function(){
 
-		it('Should be able to get the list of offers crawlers',function(done){
-			request(app).get('/api/offers/crawler/page/1/limit/10')
+		it('Should be able to get the list of offers ',function(done){
+			request(app).get('/api/offers/bd/page/1/limit/10')
+				.set('Accept','application/json')
+				.expect('Content-Type',/json/)
+					.expect(200)
+				.end(function(err,res){
+					console.log(res.body.total);
+					res.body.total.should.be.equal(1);
+					res.body.docs[0].should.have.property('merchantProductId',offer_crawler.merchantProductId);
+					//res.body[0].should.have.property('content',article.content);
+					done();
+			});
+		});
+
+
+		it('Should be able to get the list of offers by ean=7895500723961',function(done){
+			request(app).get('/api/offers/bd/ean/7895500723961/page/1/limit/10/')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)

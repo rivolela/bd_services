@@ -11,7 +11,7 @@ describe('Zanox Controller Unit Tests:',function(){
 
 			this.timeout(4000);
 
-			request(app).get('/api/offers/query/fogao/page/0/items/50')
+			request(app).get('/api/offers/zn/query/fogao/page/0/items/50')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)
