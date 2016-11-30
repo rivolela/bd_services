@@ -92,6 +92,40 @@ exports.getOffersBD = function(query,next){
 };
 
 
+exports.search = function(req,res){
+
+	var page = Number(req.params.page || 0);
+    var limit = Number(req.params.limit || 10);
+    var query = String(req.params.query);
+
+    console.log("query >>" , query);
+
+	var options = {
+	  select: {
+	  	 score: { $meta: "textScore" }
+	  },
+	  sort: { 
+	  	score: { $meta: "textScore" }
+	  },
+	  //lean: true,
+	  //offset: 10, 
+	  page: page,
+	  limit: limit
+	};
+
+	Offer.paginate({$text:{$search:query}},options,function(err, result) {
+		if(err){
+			console.log(err);
+			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+		}else{
+			res.json(result);
+		}
+	});
+};
+
+
 exports.list = function(req,res){
 
 	var page = Number(req.params.page || 0);

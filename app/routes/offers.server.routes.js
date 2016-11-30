@@ -10,6 +10,9 @@ module.exports = function(app){
 	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit')
 	.get(offers_crawler.listByCategory);
 
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit')
+	.get(offers_crawler.search);
+
 	//.post(users.requireLogin,articles.create);
 
 	// app.route('/api/articles/:articleId')
