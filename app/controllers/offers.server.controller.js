@@ -113,7 +113,7 @@ exports.search = function(req,res){
 	  limit: limit
 	};
 
-	Offer.paginate({$text:{$search:query}},options,function(err, result) {
+	Offer.paginate({$text:{$search:query},totalReviews:{$gt:0}},options,function(err, result) {
 		if(err){
 			console.log(err);
 			return res.status(400).send({

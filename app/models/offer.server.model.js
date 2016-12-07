@@ -31,6 +31,9 @@ var OfferSchema = new Schema({
     type:Date,
     default: Date.now
   },
+  countSad: Number,
+  countHappy: Number,
+  totalReviews: Number
 });
 
 // middleware to handle attributes before to save

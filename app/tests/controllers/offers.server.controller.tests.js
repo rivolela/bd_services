@@ -17,7 +17,10 @@ describe('Offers BD Controller Unit Tests:',function(){
 			ean: '7895500723961',
 			url: 'http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[489238/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]',
 			advertiser: 'Walmart BR',
-			manufacturer: 'Safanelli'
+			manufacturer: 'Safanelli',
+			countSad: 1,
+      		countHappy: 1,
+      		totalReviews: 2,
 		});
 
 		offer_crawler.save(function(err){
