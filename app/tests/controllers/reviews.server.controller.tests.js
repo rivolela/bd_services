@@ -16,7 +16,7 @@ describe('Reviews Controller Unit Tests:',function(){
         	author: 'thalita ',
         	location: 'Curitiba',
         	ean: 88888888888888,
-        	date: '1470366041000',
+        	date: '1447864217000',
         	category: "Eletrodomésticos / Fogões / Embutir 5 Bocas",
         	advertiser:"walmart",
         	url:"http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[1109777/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]",
@@ -43,6 +43,7 @@ describe('Reviews Controller Unit Tests:',function(){
 					console.log(res.body.total);
 					res.body.total.should.be.equal(1);
 					res.body.docs[0].should.have.property('advertiser',review.advertiser);
+					res.body.docs[0].should.have.property('dateBR','18/11/2015');
 					done();
 			});
 		});

@@ -44,6 +44,7 @@ exports.list = function(req,res){
 				message: getErrorMessage(err)
 			});
 		}else{
+			console.log(result);
 			res.json(result);
 		}
 	});

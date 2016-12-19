@@ -21,6 +21,7 @@ describe('Offers BD Controller Unit Tests:',function(){
 			countSad: 1,
       		countHappy: 1,
       		totalReviews: 2,
+      		price: "199.9"
 		});
 
 		offer_crawler.save(function(err){
@@ -40,7 +41,7 @@ describe('Offers BD Controller Unit Tests:',function(){
 				.end(function(err,res){
 					res.body.total.should.be.equal(1);
 					res.body.docs[0].should.have.property('merchantProductId',offer_crawler.merchantProductId);
-					//res.body[0].should.have.property('content',article.content);
+					res.body.docs[0].should.have.property('price_br',"R$ 199,90");
 					done();
 			});
 		});

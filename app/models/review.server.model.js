@@ -34,6 +34,23 @@ var ReviewSchema = new Schema({
   },
 });
 
+// virtuals
+ReviewSchema.virtual('dateBR').get(function(){
+  var data = new Date(Number(this.date));
+  var dataFormatada = ("0" + data.getDate()).substr(-2) + "/" 
+    + ("0" + (data.getMonth() + 1)).substr(-2) + "/" + data.getFullYear();
+  return dataFormatada;
+});
+
+ReviewSchema.set('toJSON',{
+  getters:true,
+  virtuals:true
+});
+
+ReviewSchema.set('toObject',{
+  getters:true,
+  virtuals:true
+});
 
 ReviewSchema.plugin(mongoosePaginate);
 

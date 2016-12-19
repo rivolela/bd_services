@@ -129,7 +129,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-node-inspector');
 	grunt.loadNpmTasks('grunt-contrib-less');
 
-	grunt.registerTask('default',['env:dev','lint','less:dev','concurrent:dev']);
+	grunt.registerTask('dev',['env:dev','lint','less:dev','concurrent:dev']);
 	grunt.registerTask('debug',['env:dev','lint','concurrent:debug']);
 	grunt.registerTask('lint',['jshint','csslint']);
 	grunt.registerTask('test',['env:test','lint','mochaTest']);
