@@ -185,7 +185,7 @@ exports.listByEan = function(req,res){
 	  //offset: 10, 
 	  page: page,
 	  limit: limit,
-	  distinct: 'ean'
+	  distinct: 'merchantProductId'
 	};
 
 
