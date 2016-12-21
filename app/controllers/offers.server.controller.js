@@ -178,13 +178,14 @@ exports.listByEan = function(req,res){
 
 	var options = {
 	  //select: 'advertiser date',
-	  // sort: { 
-	  // 	date: 'asc'
-	  // },
+	  sort: { 
+	  	price: 'asc'
+	  },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
-	  limit: limit
+	  limit: limit,
+	  distinct: 'ean'
 	};
 
 
