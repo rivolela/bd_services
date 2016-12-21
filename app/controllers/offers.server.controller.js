@@ -105,12 +105,14 @@ exports.search = function(req,res){
 	  	 score: { $meta: "textScore" }
 	  },
 	  sort: { 
-	  	score: { $meta: "textScore" }
+	  	score: { $meta: "textScore" },
+	  	totalReviews: 'desc',
 	  },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
-	  limit: limit
+	  limit: limit,
+	  distinct: 'ean'
 	};
 
 	Offer.paginate({$text:{$search:query},totalReviews:{$gt:0}},options,function(err, result) {
@@ -134,13 +136,14 @@ exports.list = function(req,res){
 
 	var options = {
 	  //select: 'advertiser date',
-	  // sort: { 
-	  // 	date: 'asc'
-	  // },
+	  sort: { 
+	  	totalReviews: 'desc'
+	  },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
-	  limit: limit
+	  limit: limit,
+	  distinct: 'ean'
 	};
 
 
