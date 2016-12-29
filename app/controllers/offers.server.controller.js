@@ -14,7 +14,12 @@ var getErrorMessage = function(err){
 	}
 };
 
-
+/**	[saveOffersPickoout ]
+ * @param  {[currentItem]}
+ * @param  {[productsArray]} @desc
+ * @param  {next}
+ * @return {[type]}
+ */
 exports.saveOffersPickoout = function(currentItem,productsArray,next){
 
 	if(currentItem < productsArray.length){
@@ -100,30 +105,45 @@ exports.search = function(req,res){
 
     console.log("query >>" , query);
 
+    // find users above 18 by city 
+	var aggregate = Offer.aggregate();
+
+	aggregate.match({
+		$text:{$search:query},
+		totalReviews:{$gt:0}
+	})
+	.sort({
+		score: { 
+	  		$meta: "textScore",
+	  		totalReviews: 'desc', 
+	  	},
+	})
+	.group({ 
+		_id: '$ean'	,
+		offer_id: { $first: "$_id" },
+		name: { $first: "$name" },
+		ean: { $first: "$ean" },
+		image_large: { $first: "$image_large" },
+		image_medium: { $first: "$image_medium" },
+		countSad: { $first: "$countSad" },
+		countHappy: { $first: "$countHappy" },
+		totalReviews: { $first: "$totalReviews" },
+		score: { $first: {$meta: "textScore" }},		
+	});
+
 	var options = {
-	  select: {
-	  	 score: { $meta: "textScore" }
-	  },
-	  sort: { 
-	  	score: { $meta: "textScore" },
-	  	totalReviews: 'desc',
-	  },
-	  //lean: true,
-	  //offset: 10, 
 	  page: page,
 	  limit: limit,
-	  distinct: 'ean'
 	};
 
-	Offer.paginate({$text:{$search:query},totalReviews:{$gt:0}},options,function(err, result) {
-		if(err){
-			console.log(err);
-			return res.status(400).send({
+	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
+  		if(err) {
+  			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
-		}else{
-			res.json(result);
-		}
+  		}else{
+  			res.json({docs:results,total:count,limit:limit,page:page,pages:pageCount});
+  		}
 	});
 };
 
@@ -142,8 +162,7 @@ exports.list = function(req,res){
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
-	  limit: limit,
-	  distinct: 'ean'
+	  limit: limit
 	};
 
 
@@ -165,7 +184,7 @@ exports.listByEan = function(req,res){
 
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
-    var ean = String(req.params.ean);
+    var ean = Number(req.params.ean);
     var query;
 
     //if ean is null or empty, set url default
@@ -176,6 +195,31 @@ exports.listByEan = function(req,res){
 	}
     
 
+    // find users above 18 by city 
+	var aggregate = Offer.aggregate();
+
+	aggregate.match({
+		ean:ean,
+	})
+	.sort({
+		score: { 
+	  		$meta: "textScore",
+	  		totalReviews: 'desc', 
+	  	},
+	})
+	.group({ 
+		_id: '$merchantProductId'	,
+		offer_id: { $first: "$_id" },
+		name: { $first: "$name" },
+		ean: { $first: "$ean" },
+		image_large: { $first: "$image_large" },
+		image_medium: { $first: "$image_medium" },
+		countSad: { $first: "$countSad" },
+		countHappy: { $first: "$countHappy" },
+		totalReviews: { $first: "$totalReviews" },
+		score: { $first: {$meta: "textScore" }},		
+	});
+
 	var options = {
 	  //select: 'advertiser date',
 	  sort: { 
@@ -185,19 +229,16 @@ exports.listByEan = function(req,res){
 	  //offset: 10, 
 	  page: page,
 	  limit: limit,
-	  distinct: 'merchantProductId'
 	};
 
-
-	Offer.paginate(query,options,function(err, result) {
-		if(err){
-			console.log(err);
-			return res.status(400).send({
+	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
+  		if(err) {
+  			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
-		}else{
-			res.json(result);
-		}
+  		}else{
+  			res.json({docs:results,total:count,limit:limit,page:page,pages:pageCount});
+  		}
 	});
 };
 

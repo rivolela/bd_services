@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
+var mongooseAggregatePaginate = require('mongoose-aggregate-paginate');
 
 var OfferSchema = new Schema({
   name: {
@@ -111,6 +112,8 @@ OfferSchema.index({name: 'text',manufacturer:'text',category:'text'},
   
 // pagination
 OfferSchema.plugin(mongoosePaginate);
+
+OfferSchema.plugin(mongooseAggregatePaginate);
 
 
 mongoose.model('Offer',OfferSchema);

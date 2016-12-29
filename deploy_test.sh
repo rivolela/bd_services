@@ -1,6 +1,8 @@
 #!/bin/bash
 # My first script
 
-git push heroku master
+git add .
+git commit -m "deploy automated"
 git push heroku_test master
-git push hostgator master
+
+

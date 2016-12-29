@@ -9,27 +9,27 @@ var review;
 describe('Reviews Controller Unit Tests:',function(){
 
 
-	before(function(done){
-		review = new Review ({
-        	title: "Indicação 100% para Walmart ",
-        	description: "Comprei esse fogão com o prazo de entrega para dia 19/08/2016 foi entreguei no dia 04/08/2016 sobre a entrega perfeito deixou no 1º andar e o pessoal da entrega muito educado o fogão muito lindo superou todas minha espectativas. Parabéns Walmart ",
-        	author: 'thalita ',
-        	location: 'Curitiba',
-        	ean: 88888888888888,
-        	date: '1447864217000',
-        	category: "Eletrodomésticos / Fogões / Embutir 5 Bocas",
-        	advertiser:"walmart",
-        	url:"http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[1109777/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]",
-        	advertiser:"walmart",
-        	manufacturer: "brastemp",
-        	rating:3,
-    	});
+	// before(function(done){
+	// 	review = new Review ({
+ //        	title: "Indicação 100% para Walmart ",
+ //        	description: "Comprei esse fogão com o prazo de entrega para dia 19/08/2016 foi entreguei no dia 04/08/2016 sobre a entrega perfeito deixou no 1º andar e o pessoal da entrega muito educado o fogão muito lindo superou todas minha espectativas. Parabéns Walmart ",
+ //        	author: 'thalita ',
+ //        	location: 'Curitiba',
+ //        	ean: 88888888888888,
+ //        	date: '1447864217000',
+ //        	category: "Eletrodomésticos / Fogões / Embutir 5 Bocas",
+ //        	advertiser:"walmart",
+ //        	url:"http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[1109777/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]",
+ //        	advertiser:"walmart",
+ //        	manufacturer: "brastemp",
+ //        	rating:3,
+ //    	});
 
-		review.save(function(err){
-        	console.log(err);
-			done();
-      	});
-	});
+	// 	review.save(function(err){
+ //        	console.log(err);
+	// 		done();
+ //      	});
+	// });
 
 
 	describe('Testing the get methods',function(){
@@ -51,11 +51,11 @@ describe('Reviews Controller Unit Tests:',function(){
 	});
 
 
-	after(function(done){
-		Review.remove(function(){
-			done();
-		});
-	});
+	// after(function(done){
+	// 	Review.remove(function(){
+	// 		done();
+	// 	});
+	// });
 	
 });
 

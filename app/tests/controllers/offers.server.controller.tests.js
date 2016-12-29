@@ -6,55 +6,56 @@ var app = require('../../../server.js'),
 
 var offer_crawler;
 
-describe('Offers BD Controller Unit Tests:',function(){
+describe('Offers Server Controller Unit Tests:',function(){
 
 
-	before(function(done){
-		offer_crawler = new Offer({
-			urlOffer: '489238/sk',
-			name: 'Fogão Chef Gourmet Disney Princesa - Xalingo',
-			merchantProductId: '489238',
-			ean: '7895500723961',
-			url: 'http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[489238/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]',
-			advertiser: 'Walmart BR',
-			manufacturer: 'Safanelli',
-			countSad: 1,
-      		countHappy: 1,
-      		totalReviews: 2,
-      		price: "199.9"
-		});
+	// before(function(done){
+	// 	offer_crawler = new Offer({
+	// 		urlOffer: '489238/sk',
+	// 		name: 'Fogão Chef Gourmet Disney Princesa - Xalingo',
+	// 		merchantProductId: '489238',
+	// 		ean: '7895500723961',
+	// 		url: 'http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[489238/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]',
+	// 		advertiser: 'Walmart BR',
+	// 		manufacturer: 'Safanelli',
+	// 		countSad: 1,
+ //      		countHappy: 1,
+ //      		totalReviews: 2,
+ //      		price: "199.9"
+	// 	});
 
-		offer_crawler.save(function(err){
-			console.log(err);
-			done();
-		});
-	});
+	// 	offer_crawler.save(function(err){
+	// 		console.log(err);
+	// 		done();
+	// 	});
+	// });
 
 
-	describe('Testing the get methods',function(){
+	describe('Testing the get methods >>',function(){
 
-		it('Should be able to get the list of offers ',function(done){
+		it('Should be able to get the list of offers >>',function(done){
 			request(app).get('/api/offers/bd/page/1/limit/10')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)
 				.end(function(err,res){
-					res.body.total.should.be.equal(1);
-					res.body.docs[0].should.have.property('merchantProductId',offer_crawler.merchantProductId);
-					res.body.docs[0].should.have.property('price_br',"R$ 199,90");
+					res.body.total.should.be.equal(1445);
+					// res.body.docs[0].should.have.property('merchantProductId',9600910;
+					// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 					done();
 			});
 		});
 
 
-		it('Should be able to get the list of offers by ean=7895500723961',function(done){
-			request(app).get('/api/offers/bd/ean/7895500723961/page/1/limit/10/')
+		it('Should be able to get the list of offers by ean=7891129245433',function(done){
+			request(app).get('/api/offers/bd/ean/7891129245433/page/1/limit/10/')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)
 				.end(function(err,res){
 					res.body.total.should.be.equal(1);
-					res.body.docs[0].should.have.property('merchantProductId',offer_crawler.merchantProductId);
+					res.body.docs[0].should.have.property('merchantProductId',2063909);
+					res.body.docs[0].should.have.property('price_br',"R$ 39,90");
 					//res.body[0].should.have.property('content',article.content);
 					done();
 			});
@@ -77,11 +78,11 @@ describe('Offers BD Controller Unit Tests:',function(){
 	});
 
 
-	after(function(done){
-		Offer.remove(function(){
-			done();
-		});
-	});
+	// after(function(done){
+	// 	Offer.remove(function(){
+	// 		done();
+	// 	});
+	// });
 	
 });
 
