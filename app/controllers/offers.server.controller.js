@@ -236,6 +236,7 @@ exports.listByEan = function(req,res){
 		totalReviews: { $first: "$totalReviews" },
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
+		url: { $first: "$url" },
 	})
 	.project ({
         _id :0,
@@ -251,7 +252,8 @@ exports.listByEan = function(req,res){
 		totalReviews: 1,
 		score: 1,
 		price: 1,
-		price_display: 1
+		price_display: 1,
+		url: 1
     })
     .sort({
 		price: -1
