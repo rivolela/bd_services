@@ -31,9 +31,9 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(2);
-				res.body.docs[0].should.have.property('merchantProductId',33598);
-				res.body.docs[0].should.have.property('price',"2899.9");
-				res.body.docs[0].should.have.property('price_display',"R$ 2.899,90");
+				res.body.docs[0].should.have.property('merchantProductId',148218);
+				res.body.docs[0].should.have.property('price',"3449");
+				res.body.docs[0].should.have.property('price_display',"R$ 3.449,00");
 				//res.body[0].should.have.property('content',article.content);
 				done();
 		});

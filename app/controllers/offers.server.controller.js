@@ -127,6 +127,22 @@ exports.search = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" }		
 	})
+	.project ({
+        _id :0,
+        _id:"$offer_id",
+        merchantProductId:1,
+		name: 1,
+		ean: 1,
+		advertiser: 1,
+		image_large: 1,
+		image_medium: 1,
+		countSad: 1,
+		countHappy: 1,
+		totalReviews: 1,
+		score: 1,
+		price: 1,
+		price_display: 1
+    })
 	.sort({
 		score: -1
 	});
@@ -205,12 +221,10 @@ exports.listByEan = function(req,res){
 
 	aggregate.match({
 		ean:ean,
-	})
-	.sort({
-		price: -1
-	})
+	})	
 	.group({ 
-		_id: '$merchantProductId'	,
+		_id: '$merchantProductId',
+		offer_id: { $first: "$_id" },
 		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -222,6 +236,25 @@ exports.listByEan = function(req,res){
 		totalReviews: { $first: "$totalReviews" },
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
+	})
+	.project ({
+        _id :0,
+        _id:"$offer_id",
+        merchantProductId:1,
+		name: 1,
+		ean: 1,
+		advertiser: 1,
+		image_large: 1,
+		image_medium: 1,
+		countSad: 1,
+		countHappy: 1,
+		totalReviews: 1,
+		score: 1,
+		price: 1,
+		price_display: 1
+    })
+    .sort({
+		price: -1
 	});
 
 	var options = {
