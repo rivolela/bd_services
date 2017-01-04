@@ -31,9 +31,8 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(2);
-				res.body.docs[0].should.have.property('merchantProductId',148218);
-				res.body.docs[0].should.have.property('price',"3449");
 				res.body.docs[0].should.have.property('price_display',"R$ 3.449,00");
+				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?31856659C46689111&ULP=[[/produto/Eletrodomesticos/Refrigerador-Geladeira-Electrolux-Frost-Free-2-Portas-553-Litros-Infinity-DF80?utm_campaign=xml_produtos&portal=4256CC361F2545F3488AFD861B38B9B6&utm_source=zanox&utm_medium=Afiliados]]&zpar9=[[43EEF0445509C7205827]]");
 				//res.body[0].should.have.property('content',article.content);
 				done();
 		});

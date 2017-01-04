@@ -241,7 +241,6 @@ exports.listByEan = function(req,res){
 	.project ({
         _id :0,
         _id:"$offer_id",
-        merchantProductId:1,
 		name: 1,
 		ean: 1,
 		advertiser: 1,
@@ -251,12 +250,11 @@ exports.listByEan = function(req,res){
 		countHappy: 1,
 		totalReviews: 1,
 		score: 1,
-		price: 1,
 		price_display: 1,
 		url: 1
     })
     .sort({
-		price: -1
+		price: 1
 	});
 
 	var options = {
