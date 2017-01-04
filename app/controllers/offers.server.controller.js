@@ -277,7 +277,7 @@ exports.listByEan = function(req,res){
   			var docs = results;
   			var total = count;
   			var pages = pageCount;
-  			res.json({docs,total,limit,page,pages});
+  			res.json({docs},{total},{limit},{page},{pages});
   		}
 	});
 };
