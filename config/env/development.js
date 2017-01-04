@@ -6,7 +6,7 @@ module.exports = {
 	connectid:'43EEF0445509C7205827',
 
 	// Crawler Options 
-	// programs ids
+	// programs ids'mongodb://teste1:teste1234@ds145138.mlab.com:45138/heroku_l4pp17t7'
 	// 12011 : Walmart BR"
 	// 13212 : Ricardo Eletro BR
 	// 16588 : Lojas Colombo BR

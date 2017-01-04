@@ -105,22 +105,16 @@ exports.search = function(req,res){
 
     console.log("query >>" , query);
 
-    // find users above 18 by city 
 	var aggregate = Offer.aggregate();
 
-	aggregate.match({
-		$text:{$search:query},
-		totalReviews:{$gt:0}
-	})
-	.sort({
-		score: { 
-	  		$meta: "textScore",
-	  		totalReviews: 'desc', 
-	  	},
+	aggregate
+	.match({
+		$text:{$search:query}
 	})
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
+		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
 		image_large: { $first: "$image_large" },
@@ -128,12 +122,17 @@ exports.search = function(req,res){
 		countSad: { $first: "$countSad" },
 		countHappy: { $first: "$countHappy" },
 		totalReviews: { $first: "$totalReviews" },
-		score: { $first: {$meta: "textScore" }},		
+		score: { $first: {$meta: "textScore" }},
+		price: { $first: "$price" },
+		price_display: { $first: "$price_display" }		
+	})
+	.sort({
+		score: -1
 	});
 
 	var options = {
 	  page: page,
-	  limit: limit,
+	  limit: limit
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
@@ -179,7 +178,12 @@ exports.list = function(req,res){
 };
 
 
-
+/**
+ * @description get list of offer by ean ( ordered by price )
+ * @param  {req}
+ * @param  {res}
+ * @return {json{docs,total,limit,page,pages}}
+ */
 exports.listByEan = function(req,res){
 
 	var page = Number(req.params.page || 0);
@@ -202,14 +206,11 @@ exports.listByEan = function(req,res){
 		ean:ean,
 	})
 	.sort({
-		score: { 
-	  		$meta: "textScore",
-	  		totalReviews: 'desc', 
-	  	},
+		price: -1
 	})
 	.group({ 
 		_id: '$merchantProductId'	,
-		offer_id: { $first: "$_id" },
+		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
 		image_large: { $first: "$image_large" },
@@ -217,14 +218,15 @@ exports.listByEan = function(req,res){
 		countSad: { $first: "$countSad" },
 		countHappy: { $first: "$countHappy" },
 		totalReviews: { $first: "$totalReviews" },
-		score: { $first: {$meta: "textScore" }},		
+		price: { $first: "$price" },
+		price_display: { $first: "$price_display" },
 	});
 
 	var options = {
 	  //select: 'advertiser date',
-	  sort: { 
-	  	price: 'asc'
-	  },
+	  // sort: { 
+	  // 	price: 'asc'
+	  // },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,

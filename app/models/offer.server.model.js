@@ -12,7 +12,9 @@ var OfferSchema = new Schema({
   ean: Number,
   image_medium: String,
   image_large: String,
-  price: String,
+  price: {
+    type:String,
+  },
   category: {
     type:String,
     index: true 
@@ -53,57 +55,57 @@ OfferSchema.pre('save',function(next){
 
 
 // virtuals
-OfferSchema.virtual('price_br').get(function(){
+// OfferSchema.virtual('price_br').get(function(){
     
-    // config
-    var valor = Number(this.price);
-    var casas = 2;
-    var separdor_decimal = ',';
-    var separador_milhar = '.';
+//     // config
+//     var valor = Number(this.price);
+//     var casas = 2;
+//     var separdor_decimal = ',';
+//     var separador_milhar = '.';
 
 
-    var valor_total = parseInt(valor * (Math.pow(10,casas)));
-    var inteiros =  parseInt(parseInt(valor * (Math.pow(10,casas))) / parseFloat(Math.pow(10,casas)));
-    var centavos = parseInt(parseInt(valor * (Math.pow(10,casas))) % parseFloat(Math.pow(10,casas)));
+//     var valor_total = parseInt(valor * (Math.pow(10,casas)));
+//     var inteiros =  parseInt(parseInt(valor * (Math.pow(10,casas))) / parseFloat(Math.pow(10,casas)));
+//     var centavos = parseInt(parseInt(valor * (Math.pow(10,casas))) % parseFloat(Math.pow(10,casas)));
    
-    if(centavos%10 == 0 && centavos+"".length<2 ){
-      centavos = centavos+"0";
-    }else if(centavos<10){
-      centavos = "0"+centavos;
-    }
+//     if(centavos%10 == 0 && centavos+"".length<2 ){
+//       centavos = centavos+"0";
+//     }else if(centavos<10){
+//       centavos = "0"+centavos;
+//     }
   
-    var milhares = parseInt(inteiros/1000);
-    inteiros = inteiros % 1000; 
+//     var milhares = parseInt(inteiros/1000);
+//     inteiros = inteiros % 1000; 
    
-    var retorno = "";
+//     var retorno = "";
    
-    if(milhares>0){
-      retorno = milhares+""+separador_milhar+""+retorno
-    if(inteiros == 0){
-      inteiros = "000";
-    } else if(inteiros < 10){
-      inteiros = "00"+inteiros; 
-    } else if(inteiros < 100){
-      inteiros = "0"+inteiros; 
-    }
-  }
+//     if(milhares>0){
+//       retorno = milhares+""+separador_milhar+""+retorno
+//     if(inteiros == 0){
+//       inteiros = "000";
+//     } else if(inteiros < 10){
+//       inteiros = "00"+inteiros; 
+//     } else if(inteiros < 100){
+//       inteiros = "0"+inteiros; 
+//     }
+//   }
 
-  retorno += inteiros+""+separdor_decimal+""+centavos;
+//   retorno += inteiros+""+separdor_decimal+""+centavos;
  
-  return 'R$ ' + retorno;
-});
+//   return 'R$ ' + retorno;
+// });
 
 
-OfferSchema.set('toJSON',{
-  getters:true,
-  virtuals:true
-});
+// OfferSchema.set('toJSON',{
+//   getters:true,
+//   virtuals:true
+// });
 
 
-OfferSchema.set('toObject',{
-  getters:true,
-  virtuals:true
-});
+// OfferSchema.set('toObject',{
+//   getters:true,
+//   virtuals:true
+// });
 
 
 // inxdex text search
