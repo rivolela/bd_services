@@ -274,10 +274,13 @@ exports.listByEan = function(req,res){
 				message: getErrorMessage(err)
 			});
   		}else{
-  			var docs = results;
-  			var total = count;
-  			var pages = pageCount;
-  			res.json({docs},{total},{limit},{page},{pages});
+  			resp = {docs:results,
+  					total:count,
+  					limit:limit,
+  					page:page,
+  					pages:pageCount};
+
+  			res.json(resp);
   		}
 	});
 };
