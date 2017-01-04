@@ -213,6 +213,7 @@ exports.listByEan = function(req,res){
 		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
+		advertiser: { $first: "$advertiser" },
 		image_large: { $first: "$image_large" },
 		image_medium: { $first: "$image_medium" },
 		countSad: { $first: "$countSad" },
