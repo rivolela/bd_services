@@ -254,7 +254,7 @@ exports.listByEan = function(req,res){
 		url: 1
     })
     .sort({
-		price: 1
+		price_display: 1
 	});
 
 	var options = {

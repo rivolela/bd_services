@@ -31,9 +31,17 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(2);
-				res.body.docs[0].should.have.property('price_display',"R$ 3.449,00");
-				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?31856659C46689111&ULP=[[/produto/Eletrodomesticos/Refrigerador-Geladeira-Electrolux-Frost-Free-2-Portas-553-Litros-Infinity-DF80?utm_campaign=xml_produtos&portal=4256CC361F2545F3488AFD861B38B9B6&utm_source=zanox&utm_medium=Afiliados]]&zpar9=[[43EEF0445509C7205827]]");
-				//res.body[0].should.have.property('content',article.content);
+				res.body.docs[0].should.have.property('_id',"586b0e7748d4552810204a50");
+				res.body.docs[0].should.have.property('name',"Geladeira/Refrigerador Electrolux Infinity DF80 553L 2 portas Frost Free Branco");
+				res.body.docs[0].should.have.property('ean',7896584042719);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/2498101-250-250");
+				res.body.docs[0].should.have.property('countSad',0);
+				res.body.docs[0].should.have.property('countHappy',6);
+				res.body.docs[0].should.have.property('totalReviews',6);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.899,90");
+				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?25371034C45550273&ULP=[[33598/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[43EEF0445509C7205827]]");
 				done();
 		});
 	});
