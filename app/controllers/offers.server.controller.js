@@ -110,8 +110,8 @@ exports.search = function(req,res){
 	aggregate
 	.match({
 		$text:{
-			$search:query,
-			$language:'pt'
+			$search:query
+			// $language:'pt'
 		}
 	})
 	.group({ 
