@@ -3,7 +3,7 @@ module.exports = {
 	// Test configuration options
 	db:'mongodb://teste1:teste1234@ds145138.mlab.com:45138/heroku_l4pp17t7',
 	sessionSecret: 'testSessionSecret',
-	connectid:'43EEF0445509C7205827',
+	connectid:'A3697E2455EA755B758F',
 	viewEngine: 'ejs',
 
 	// Crawler Options 

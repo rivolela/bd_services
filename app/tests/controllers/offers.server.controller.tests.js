@@ -54,8 +54,8 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(98);
-				res.body.docs[0].should.have.property('merchantProductId',212979);
+				res.body.total.should.be.equal(140);
+				res.body.docs[0].should.have.property('merchantProductId',148218);
 				//res.body[0].should.have.property('content',article.content);
 				done();
 		});
