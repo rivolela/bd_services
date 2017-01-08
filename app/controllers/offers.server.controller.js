@@ -109,7 +109,10 @@ exports.search = function(req,res){
 
 	aggregate
 	.match({
-		$text:{$search:query}
+		$text:{
+			$search:query,
+			$language:'pt'
+		}
 	})
 	.group({ 
 		_id: '$ean'	,
