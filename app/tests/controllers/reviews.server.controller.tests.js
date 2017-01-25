@@ -11,7 +11,7 @@ describe('Reviews Controller Unit Tests:',function(){
 	describe('Testing the get methods',function(){
 
 		it('Should be able to get the list of reviews',function(done){
-			request(app).get('/api/reviews/ean/7891129246515/page/1/limit/10')
+			request(app).get('/api/reviews/ean/7891129246515/page/1/limit/10/filter/0')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)
 					.expect(200)

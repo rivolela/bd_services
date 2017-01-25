@@ -10,9 +10,11 @@ module.exports = function(app){
 	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit')
 	.get(offers_crawler.listByCategory);
 
-	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit')
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.search);
 
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/')
+	.get(offers_crawler.search);
 	//.post(users.requireLogin,articles.create);
 
 	// app.route('/api/articles/:articleId')
@@ -21,5 +23,5 @@ module.exports = function(app){
 	// 	.delete(users.requireLogin,articles.hasAuthorization,articles.delete);
 
 	// app.param('articleId',articles.articleByID);
-
+	// app.param('page',offers_crawler.validatePage);
 };

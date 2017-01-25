@@ -97,15 +97,71 @@ exports.getOffersBD = function(query,next){
 };
 
 
+// exports.validatePage = function(req,res,next,page){
+// 	console.log("validatePage >>",page);
+// 	// Article.findById(id).populate('creator','firstName lastName fullName').exec(function(err,article){
+// 	// 	if(err){
+// 	// 		return next(err);
+// 	// 	}
+// 	// 	if(!article){
+// 	// 		return next(new Error('Failed to load article' + id));			
+// 	// 	}
+// 	// 	req.article = article;
+// 	// 	next();
+// 	// });
+// 	next();
+// };
+var filter_offers = function(filter,next){
+
+    switch(filter) {
+	// filter by higher score
+    case 0:
+        filter = {
+			score: -1
+		};
+		 break;
+	// filter by total of reviews and after higher score
+    case 1:
+        filter = {
+			totalReviews: -1,
+			score: -1
+		};
+        break;
+    // filter by total of countHappy and after higher score
+    case 2:
+        filter = {
+			countHappy: -1,
+			score: -1
+		};
+        break;
+    // filter by total of countSad and after higher score
+    case 3:
+        filter = {
+			countSad: -1,
+			score: -1
+		};
+        break;
+    
+	};
+
+	return next(filter);
+}
+
+
 exports.search = function(req,res){
 
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
     var query = String(req.params.query);
-
+    var filter = Number(req.params.filter || 0);
+    var aggregate = Offer.aggregate();
+    
+    console.log("filter",filter);
     console.log("query >>" , query);
 
-	var aggregate = Offer.aggregate();
+    filter_offers(filter,function(respFilter){
+    	filter = respFilter;
+    });
 
 	aggregate
 	.match({
@@ -146,9 +202,7 @@ exports.search = function(req,res){
 		price: 1,
 		price_display: 1
     })
-	.sort({
-		score: -1
-	});
+	.sort(filter);
 
 	var options = {
 	  page: page,

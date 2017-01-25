@@ -15,17 +15,50 @@ var getErrorMessage = function(err){
 };
 
 
+var filter_query = function(ean,filter,next){
+    
+	switch(filter) {
+	// filter == 0 (all reviews)
+    case 0:
+        query = {$and: [
+          {ean: ean},
+          {rating:{ $gte: 0 }}
+      	]};
+      	break;
+	// bd_boy_happy (rating>=4)	
+    case 1:
+        query = {$and: [
+          {ean: ean},
+          {rating:{ $gte: 4 }}
+      	]};
+        break;
+    // bd_boy_happy (rating<=3)	
+    case 2:
+        query = {$and: [
+          {ean: ean},
+          {rating:{ $lte: 3 }}
+      	]};
+        break;
+	};
+
+	return next(query);
+}
+
+
 exports.list = function(req,res){
 
 	var ean = Number(req.params.ean || 0);
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
+    var filter = Number(req.params.filter || 0);
+    var query;
 
-    var query = {ean:ean};
+	filter_query(ean,filter,function(respFilter){
+    	query = respFilter;
+    });
 
-    console.log(req.params);
 
-	var options = {
+   	var options = {
 	  //select: 'advertiser date',
 	  // sort: { 
 	  // 	date: 'asc'
