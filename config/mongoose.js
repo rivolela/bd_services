@@ -3,7 +3,12 @@ mongoose = require('mongoose');
 
 module.exports = function(){
 
-	var uristring = config.db;
+	if (process.env.NODE_ENV==='production'){
+		var uristring = process.env.db;
+	}else{
+		var uristring = config.db;
+	}
+	
 
 	var db = mongoose.connect(uristring,function(err, res){
 		
