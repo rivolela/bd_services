@@ -183,8 +183,8 @@ exports.search = function(req,res){
 		countHappy: { $first: "$countHappy" },
 		totalReviews: { $first: "$totalReviews" },
 		score: { $first: {$meta: "textScore" }},
-		price: { $first: "$price" },
-		price_display: { $first: "$price_display" }		
+		price: { $min: "$price" },
+		price_display: { $min: "$price_display" }		
 	})
 	.project ({
         _id :0,
