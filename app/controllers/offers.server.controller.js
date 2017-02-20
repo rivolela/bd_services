@@ -120,26 +120,25 @@ var filter_offers = function(filter,next){
 			score: -1
 		};
 		 break;
-	// filter by higher score and after total of reviews
+	// filter by total of reviews and after higher score
     case 1:
         filter = {
-        	score: -1,
-			totalReviews: -1
+			totalReviews: -1,
+			score: -1
 		};
         break;
-    // filter by higher score and after total of countHappy 
+    // filter by total of countHappy and after higher score
     case 2:
         filter = {
-        	score: -1,
-			countHappy: -1
+			countHappy: -1,
+			score: -1
 		};
         break;
-    // filter by higher score  and after total of countSad
+    // filter by total of countSad and after higher score
     case 3:
         filter = {
-        	score: -1,
-			countSad: -1
-			
+			countSad: -1,
+			score: -1
 		};
         break;
     
@@ -171,7 +170,7 @@ exports.search = function(req,res){
 			// $language:'pt'
 		}
 	})
-	.sort(filter)
+	// .sort(filter)
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
@@ -208,7 +207,8 @@ exports.search = function(req,res){
 
 	var options = {
 	  page: page,
-	  limit: limit
+	  limit: limit,
+	  sort:filter
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
