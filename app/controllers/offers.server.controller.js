@@ -208,7 +208,7 @@ exports.search = function(req,res){
 	var options = {
 	  page: page,
 	  limit: limit,
-	  sort:filter
+	  sortBy:filter
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
