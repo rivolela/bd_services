@@ -110,7 +110,7 @@ OfferSchema.pre('save',function(next){
 
 // inxdex text search
 OfferSchema.index({name: 'text',manufacturer:'text',category:'text'},
-  {name: 'My text index', weights: {category: 10, name: 4, manufacturer: 2}});
+  {name: 'My text index', weights: {category: 10, name: 2, manufacturer: 1}});
   
 // pagination
 OfferSchema.plugin(mongoosePaginate);
