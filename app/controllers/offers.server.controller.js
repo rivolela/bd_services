@@ -123,22 +123,22 @@ var filter_offers = function(filter,next){
 	// filter by total of reviews and after higher score
     case 1:
         filter = {
-        	score: -1,
-			totalReviews: -1
+        	totalReviews: -1,
+        	score: -1
 		};
         break;
     // filter by total of countHappy and after higher score
     case 2:
         filter = {
-        	score: -1,
-			countHappy: -1
+        	countHappy: -1,
+        	score: -1
 		};
         break;
     // filter by total of countSad and after higher score
     case 3:
         filter = {
-        	score: -1,
-			countSad: -1
+        	countSad: -1,
+        	score: -1
 		};
         break;
     
@@ -155,12 +155,13 @@ exports.search = function(req,res){
     var query = String(req.params.query);
     var filter = Number(req.params.filter || 0);
     var aggregate = Offer.aggregate();
+    var setFilter;
     
     console.log("filter",filter);
     console.log("query >>" , query);
 
     filter_offers(filter,function(respFilter){
-    	filter = respFilter;
+    	setFilter = respFilter;
     });
 
 	aggregate
@@ -208,7 +209,7 @@ exports.search = function(req,res){
 	var options = {
 	  page: page,
 	  limit: limit,
-	  sortBy:filter
+	  sortBy: setFilter
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
