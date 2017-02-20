@@ -171,6 +171,7 @@ exports.search = function(req,res){
 			// $language:'pt'
 		}
 	})
+	.sort(filter)
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
@@ -202,8 +203,8 @@ exports.search = function(req,res){
 		score: 1,
 		price: 1,
 		price_display: 1
-    })
-	.sort(filter);
+    });
+	
 
 	var options = {
 	  page: page,
