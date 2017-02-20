@@ -113,37 +113,53 @@ exports.getOffersBD = function(query,next){
 // };
 var filter_offers = function(filter,next){
 
+	var resp;
+
     switch(filter) {
 	// filter by higher score
     case 0:
-        filter = {
+        resp = {
+			score: { 
+				$meta: "textScore" 
+			},
 			score: -1
 		};
-		 break;
+		break;
 	// filter by total of reviews and after higher score
     case 1:
-        filter = {
-        	score: -1,
-        	totalReviews: -1
-  		};
+        resp = {
+        	score: { 
+				$meta: "textScore" 
+			},
+			score: -1,
+			totalReviews: -1
+    	};
         break;
     // filter by total of countHappy and after higher score
     case 2:
-        filter = {
+        resp = {
+        	score: { 
+				$meta: "textScore" 
+			},
         	score: -1,
-        	countHappy: -1,
-    	};
+        	countHappy: -1
+		};
         break;
     // filter by total of countSad and after higher score
     case 3:
-        filter = {
-        	score: -1,
-        	countSad: -1
-       	};
+        resp = {
+        	score: { 
+				$meta: "textScore" 
+			},
+			score:-1,
+			countSad: -1
+		};
         break;
-    };
+    
+	};
 
-	return next(filter);
+	console.log("resp",resp);
+	return next(resp);
 }
 
 
@@ -170,7 +186,6 @@ exports.search = function(req,res){
 			// $language:'pt'
 		}
 	})
-	// .sort(filter)
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
@@ -183,9 +198,10 @@ exports.search = function(req,res){
 		countSad: { $first: "$countSad" },
 		countHappy: { $first: "$countHappy" },
 		totalReviews: { $first: "$totalReviews" },
-		score: { $first: {$meta: "textScore" }},
+		score: { $max: {$meta: "textScore" }},
 		price: { $min: "$price" },
-		price_display: { $min: "$price_display" }		
+		price_display: { $min: "$price_display" },
+		category: { $first: "$category" },		
 	})
 	.project ({
         _id :0,
@@ -201,14 +217,20 @@ exports.search = function(req,res){
 		totalReviews: 1,
 		score: 1,
 		price: 1,
-		price_display: 1
-    });
+		price_display: 1,
+		category:1
+    }).sort(
+    	setFilter
+  	);
 	
 
 	var options = {
 	  page: page,
 	  limit: limit,
-	  sortBy: setFilter
+	  // sortBy:{
+	  // 	// score: -1,
+	  // 	// countSad: -1
+	  // }
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
