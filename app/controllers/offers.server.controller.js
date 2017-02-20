@@ -120,25 +120,26 @@ var filter_offers = function(filter,next){
 			score: -1
 		};
 		 break;
-	// filter by total of reviews and after higher score
+	// filter by higher score and after total of reviews
     case 1:
         filter = {
-			totalReviews: -1,
-			score: -1
+        	score: -1,
+			totalReviews: -1
 		};
         break;
-    // filter by total of countHappy and after higher score
+    // filter by higher score and after total of countHappy 
     case 2:
         filter = {
-			countHappy: -1,
-			score: -1
+        	score: -1,
+			countHappy: -1
 		};
         break;
-    // filter by total of countSad and after higher score
+    // filter by higher score  and after total of countSad
     case 3:
         filter = {
-			countSad: -1,
-			score: -1
+        	score: -1,
+			countSad: -1
+			
 		};
         break;
     
