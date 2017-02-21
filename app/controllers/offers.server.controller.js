@@ -128,17 +128,17 @@ var filter_offers = function(filter,next){
 	// filter by total of reviews and after higher score
     case 1:
         resp = {
-        	totalReviews: -1
+        	totalReviews: -1,
         	score: { 
 				$meta: "textScore" 
 			},
-			score: -1,
+			score: -1
 		};
         break;
     // filter by total of countHappy and after higher score
     case 2:
         resp = {
-        	countHappy: -1
+        	countHappy: -1,
         	score: { 
 				$meta: "textScore" 
 			},
@@ -148,11 +148,11 @@ var filter_offers = function(filter,next){
     // filter by total of countSad and after higher score
     case 3:
         resp = {
-        	countSad: -1
+        	countSad: -1,
         	score: { 
 				$meta: "textScore" 
 			},
-			score:-1,
+			score:-1
 		};
         break;
     
