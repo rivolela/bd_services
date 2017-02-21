@@ -7,10 +7,10 @@ var offer_crawler;
 
 describe('Offer Crawler Model Unit Tests:',function(){
 
-	it('Should not be able to get the offer list == 316 offers ',function(done){
+	it('Should not be able to get the offer list == 969 offers ',function(done){
 		this.timeout(4000);
 		Offer.find({},function(err,offers){
-			offers.length.should.be.equal(316);
+			offers.length.should.be.equal(969);
 			done();
 		});
 	});

@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(316);
+				res.body.total.should.be.equal(969);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -47,15 +47,15 @@ describe('Offers Server Controller Unit Tests:',function(){
 	});
 
 
-	it('Should be able to find the product by query = Refrigerador Geladeira Electrolux Infinity Frost Free',function(done){
+	it('Should be able to find the product by query = Ar Condicionado Split Consul, Quente e Frio, 9000 BTUS, 220 V',function(done){
 		this.timeout(4000);
-		request(app).get('/api/offers/bd/query/Refrigerador Geladeira Electrolux Infinity Frost Free/page/1/limit/10/filter/0')
+		request(app).get('/api/offers/bd/query/Ar Condicionado Split Consul, Quente e Frio, 9000 BTUS, 220 V - CBZ09DB/page/1/limit/30/filter/1')
 			.set('Accept','application/json')
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(135);
-				res.body.docs[0].should.have.property('merchantProductId',1123);
+				res.body.total.should.be.equal(1);
+				res.body.docs[0].should.have.property('merchantProductId',486252);
 				//res.body[0].should.have.property('content',article.content);
 				done();
 		});

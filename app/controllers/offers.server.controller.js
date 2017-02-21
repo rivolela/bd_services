@@ -182,7 +182,7 @@ exports.search = function(req,res){
 	aggregate
 	.match({
 		$text:{
-			$search:query
+			$search:"\"" + query + "\""
 			// $language:'pt'
 		}
 	})
