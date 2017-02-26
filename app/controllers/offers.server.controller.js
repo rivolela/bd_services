@@ -194,7 +194,7 @@ exports.search = function(req,res){
 	})
 	.group({ 
 		_id: '$ean'	,
-		offer_id: { $first: "$_id" },
+		// offer_id: { $first: "$_id" },
 		// merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -211,7 +211,7 @@ exports.search = function(req,res){
 	})
 	.project ({
         _id :0,
-        _id:"$offer_id",
+        // _id:"$offer_id",
         // merchantProductId:1,
 		name: 1,
 		ean: 1,
