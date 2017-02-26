@@ -80,7 +80,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b3e6a44de9c33413cf1");
+				res.body.docs[0].should.have.property('_id',"58ab0b076a44de9c33413cca");
 				res.body.docs[0].should.have.property('name',"iPhone SE 16GB Apple Dourado MLXM2 - 4G, Tela IPS LCD 4\" Câmera 12 MP + Frontal 1.2MP, Gravação de vídeos em 4K, A9,iOS 9");
 				res.body.docs[0].should.have.property('ean',888462801768);
 				res.body.docs[0].should.have.property('advertiser',"Ricardo Eletro BR");
@@ -106,7 +106,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b3c6a44de9c33413cee");
+				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
 				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
@@ -132,7 +132,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b3c6a44de9c33413cee");
+				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
 				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
@@ -158,7 +158,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b166a44de9c33413cd5");
+				res.body.docs[0].should.have.property('_id',"58ab0b286a44de9c33413ce7");
 				res.body.docs[0].should.have.property('name',"iPhone 6s Apple 32GB Dourado MN112BR/A");
 				res.body.docs[0].should.have.property('ean',190198057792);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
@@ -184,7 +184,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b3c6a44de9c33413cee");
+				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
 				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
