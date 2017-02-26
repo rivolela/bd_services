@@ -154,6 +154,12 @@ var filter_offers = function(filter,next){
 			},
 			score:-1
 		};
+        break;    
+	// filter by minor price_display
+    case 4:
+        resp = {
+        	price_display: 1,
+		};
         break;
     
 	};
@@ -189,7 +195,7 @@ exports.search = function(req,res){
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
-		merchantProductId: { $first: "$merchantProductId" },
+		// merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
 		advertiser: { $first: "$advertiser" },
@@ -206,7 +212,7 @@ exports.search = function(req,res){
 	.project ({
         _id :0,
         _id:"$offer_id",
-        merchantProductId:1,
+        // merchantProductId:1,
 		name: 1,
 		ean: 1,
 		advertiser: 1,
