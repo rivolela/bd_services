@@ -306,7 +306,7 @@ exports.listByEan = function(req,res){
 
 	aggregate.match({
 		ean:ean,
-	})	
+	})
 	.group({ 
 		_id: '$merchantProductId',
 		offer_id: { $first: "$_id" },
@@ -322,8 +322,6 @@ exports.listByEan = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
 		url: { $first: "$url" },
-	}).sort({
-		price_display: -1
 	})
 	.project ({
         _id :0,
@@ -340,13 +338,13 @@ exports.listByEan = function(req,res){
 		price:1,
 		price_display: 1,
 		url: 1
-    })
+    });
   
 	var options = {
 	  //select: 'advertiser date',
-	  // sort: { 
-	  // 	price: 'asc'
-	  // },
+	  sort: { 
+	  	price_display: 'asc'
+	  },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
