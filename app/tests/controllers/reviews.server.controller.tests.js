@@ -17,7 +17,7 @@ describe('Reviews Controller Unit Tests:',function(){
 					.expect(200)
 				.end(function(err,res){
 					console.log(res.body.total);
-					res.body.total.should.be.equal(4);
+					res.body.total.should.be.equal(9);
 					res.body.docs[0].should.have.property('_id','58656a9930ffc4570836986d');
 					res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
 					res.body.docs[0].should.have.property('author','Selma');

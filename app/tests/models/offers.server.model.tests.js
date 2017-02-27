@@ -8,9 +8,9 @@ var offer_crawler;
 describe('Offer Crawler Model Unit Tests:',function(){
 
 	it('Should not be able to get the offer list == 969 offers ',function(done){
-		this.timeout(4000);
+		this.timeout(20000);
 		Offer.find({},function(err,offers){
-			offers.length.should.be.equal(969);
+			offers.length.should.be.equal(9333);
 			done();
 		});
 	});

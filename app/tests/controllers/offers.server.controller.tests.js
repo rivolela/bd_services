@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(969);
+				res.body.total.should.be.equal(9333);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -30,8 +30,8 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(2);
-				res.body.docs[0].should.have.property('_id',"58738fa246ee6dfe219640a2");
+				res.body.total.should.be.equal(3);
+				res.body.docs[0].should.have.property('_id',"33598");
 				res.body.docs[0].should.have.property('name',"Geladeira/Refrigerador Electrolux Infinity DF80 553L 2 portas Frost Free Branco");
 				res.body.docs[0].should.have.property('ean',7896584042719);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
@@ -65,7 +65,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('totalReviews',17);
 				res.body.docs[0].should.have.property('score',8.916666666666666);
 				res.body.docs[0].should.have.property('price',1379);
-				res.body.docs[0].should.have.property('price_display',"R$ 1.379,00");
+				res.body.docs[0].should.have.property('price_display',"R$ 1.299,00");
 				res.body.docs[0].should.have.property('category',"Eletrodomesticos / Ar Condicionado / Split Quente e Frio");
 				done();
 		});
@@ -79,20 +79,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b076a44de9c33413cca");
-				res.body.docs[0].should.have.property('name',"iPhone SE 16GB Apple Dourado MLXM2 - 4G, Tela IPS LCD 4\" Câmera 12 MP + Frontal 1.2MP, Gravação de vídeos em 4K, A9,iOS 9");
-				res.body.docs[0].should.have.property('ean',888462801768);
-				res.body.docs[0].should.have.property('advertiser',"Ricardo Eletro BR");
-				res.body.docs[0].should.have.property('image_large',"http://parceiroimg.maquinadevendas.com.br/produto/680770_5029426_20161017150919.jpg");
-				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',0);
-				res.body.docs[0].should.have.property('countHappy',1);
-				res.body.docs[0].should.have.property('totalReviews',1);
-				res.body.docs[0].should.have.property('score',1.25);
-				res.body.docs[0].should.have.property('price',2099);
-				res.body.docs[0].should.have.property('price_display',"R$ 2.099,00");
-				res.body.docs[0].should.have.property('category',"Smartphones IOS");
+				res.body.total.should.be.equal(70);
+				res.body.docs[0].should.have.property('_id',"58b42cf14dc8a12d6018666d");
+				res.body.docs[0].should.have.property('name',"iPhone 5S Apple com 16GB, Tela 4”, iOS 8, Touch ID, Câmera 8MP, Wi-Fi, 3G/4G, GPS, MP3 e Bluetooth – Cinza Espacial");
+				res.body.docs[0].should.have.property('ean',885909784301);
+				res.body.docs[0].should.have.property('advertiser',"Pontofrio BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium',"http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=104670776");
+				res.body.docs[0].should.have.property('countSad',1);
+				res.body.docs[0].should.have.property('countHappy',16);
+				res.body.docs[0].should.have.property('totalReviews',17);
+				res.body.docs[0].should.have.property('score',1.2738095238095237);
+				res.body.docs[0].should.have.property('price',1699);
+				res.body.docs[0].should.have.property('price_display',"R$ 1.499,00");
+				res.body.docs[0].should.have.property('category',"iOS & iPhone");
 				done();
 		});
 	});
@@ -105,20 +105,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
+				res.body.total.should.be.equal(70);
+				res.body.docs[0].should.have.property('_id',"58b42c4f4dc8a12d601865a1");
+				res.body.docs[0].should.have.property('name',"Smartphone Apple Iphone 5S 16GB Desbloqueado TCDAP145");
 				res.body.docs[0].should.have.property('ean',885909784608);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large',"https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg");
-				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',1);
-				res.body.docs[0].should.have.property('countHappy',33);
-				res.body.docs[0].should.have.property('totalReviews',34);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/6872905-250-250');
+				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countHappy',65);
+				res.body.docs[0].should.have.property('totalReviews',67);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
-				res.body.docs[0].should.have.property('price',1599);
-				res.body.docs[0].should.have.property('price_display',"R$ 1.599,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
+				res.body.docs[0].should.have.property('price',1879.99);
+				res.body.docs[0].should.have.property('price_display',"R$ 1.549,00");
+				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				done();
 		});
 	});
@@ -131,20 +131,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
+				res.body.total.should.be.equal(70);
+				res.body.docs[0].should.have.property('_id',"58b42c4f4dc8a12d601865a1");
+				res.body.docs[0].should.have.property('name',"Smartphone Apple Iphone 5S 16GB Desbloqueado TCDAP145");
 				res.body.docs[0].should.have.property('ean',885909784608);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large',"https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg");
-				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',1);
-				res.body.docs[0].should.have.property('countHappy',33);
-				res.body.docs[0].should.have.property('totalReviews',34);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/6872905-250-250');
+				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countHappy',65);
+				res.body.docs[0].should.have.property('totalReviews',67);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
-				res.body.docs[0].should.have.property('price',1599);
-				res.body.docs[0].should.have.property('price_display',"R$ 1.599,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
+				res.body.docs[0].should.have.property('price',1879.99);
+				res.body.docs[0].should.have.property('price_display',"R$ 1.549,00");
+				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				done();
 		});
 	});
@@ -157,20 +157,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b286a44de9c33413ce7");
-				res.body.docs[0].should.have.property('name',"iPhone 6s Apple 32GB Dourado MN112BR/A");
+				res.body.total.should.be.equal(70);
+				res.body.docs[0].should.have.property('_id',"58b42cec4dc8a12d6018665a");
+				res.body.docs[0].should.have.property('name',"iPhone 6s Apple com Tela 4,7” HD, 32GB, 3D Touch, iOS 9, Sensor Touch ID, Câmera iSight 12MP, Wi-Fi, 4G, GPS, Bluetooth e NFC - Dourado");
 				res.body.docs[0].should.have.property('ean',190198057792);
-				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('advertiser',"Pontofrio BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/9869307-250-250");
-				res.body.docs[0].should.have.property('countSad',1);
-				res.body.docs[0].should.have.property('countHappy',1);
-				res.body.docs[0].should.have.property('totalReviews',2);
-				res.body.docs[0].should.have.property('score',1.2083333333333335);
-				res.body.docs[0].should.have.property('price',2799);
-				res.body.docs[0].should.have.property('price_display',"R$ 2.799,00");
-				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
+				res.body.docs[0].should.have.property('image_medium',"http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=595987171");
+				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countHappy',7);
+				res.body.docs[0].should.have.property('totalReviews',9);
+				res.body.docs[0].should.have.property('score',1.27);
+				res.body.docs[0].should.have.property('price',2639.12);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.639,12");
+				res.body.docs[0].should.have.property('category','iOS & iPhone');
 				done();
 		});
 	});
@@ -183,20 +183,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(17);
-				res.body.docs[0].should.have.property('_id',"58ab0b0c6a44de9c33413ccc");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
-				res.body.docs[0].should.have.property('ean',885909784608);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large',"https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg");
-				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',1);
-				res.body.docs[0].should.have.property('countHappy',33);
-				res.body.docs[0].should.have.property('totalReviews',34);
-				res.body.docs[0].should.have.property('score',1.1964285714285714);
-				res.body.docs[0].should.have.property('price',1599);
-				res.body.docs[0].should.have.property('price_display',"R$ 1.599,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
+				res.body.total.should.be.equal(70);
+				res.body.docs[0].should.have.property('_id',"58b42c2d4dc8a12d6018656b");
+				res.body.docs[0].should.have.property('name',"Apple iPhone 5c 8GB Azul Desbloqueado, iOS 8, 3G/4G, Câmera 8.0MP, Wi-Fi, GPS");
+				res.body.docs[0].should.have.property('ean',885909940899);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/4277167-250-250');
+				res.body.docs[0].should.have.property('countSad',0);
+				res.body.docs[0].should.have.property('countHappy',6);
+				res.body.docs[0].should.have.property('totalReviews',6);
+				res.body.docs[0].should.have.property('score',1.15625);
+				res.body.docs[0].should.have.property('price',1489);
+				res.body.docs[0].should.have.property('price_display',"R$ 1.489,00");
+				res.body.docs[0].should.have.property('category','Telefonia / Celulares e Smartphones / iPhones');
 				done();
 		});
 	});
