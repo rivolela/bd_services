@@ -158,7 +158,7 @@ var filter_offers = function(filter,next){
 	// filter by minor price_display
     case 4:
         resp = {
-        	price_display: 1,
+        	price: 1,
 		};
         break;
     
