@@ -161,7 +161,6 @@ var filter_offers = function(filter,next){
         	price: 1,
 		};
         break;
-    
 	};
 
 	console.log("resp",resp);
