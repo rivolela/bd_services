@@ -308,9 +308,6 @@ exports.listByEan = function(req,res){
 	.match({
 		ean:ean,
 	})
-	.sort({
-    	price_display: -1
-	})
 	.group({ 
 		_id: '$merchantProductId',
 		offer_id: { $first: "$_id" },
@@ -326,6 +323,8 @@ exports.listByEan = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
 		url: { $first: "$url" },
+	}).sort({
+    	price: 1
 	});
 	
 	// .project ({
