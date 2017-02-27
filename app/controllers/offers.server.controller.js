@@ -304,11 +304,15 @@ exports.listByEan = function(req,res){
     // find users above 18 by city 
 	var aggregate = Offer.aggregate();
 
-	aggregate.match({
+	aggregate
+	.match({
 		ean:ean,
 	})
+	.sort({
+    	price_display: -1
+	})
 	.group({ 
-		_id: '$advertiser',
+		_id: '$merchantProductId',
 		offer_id: { $first: "$_id" },
 		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
@@ -322,29 +326,30 @@ exports.listByEan = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
 		url: { $first: "$url" },
-	})
-	.project ({
-        _id :0,
-        _id:"$offer_id",
-		name: 1,
-		ean: 1,
-		advertiser: 1,
-		image_large: 1,
-		image_medium: 1,
-		countSad: 1,
-		countHappy: 1,
-		totalReviews: 1,
-		score: 1,
-		price:1,
-		price_display: 1,
-		url: 1
-    });
+	});
+	
+	// .project ({
+ //        _id :0,
+ //        _id:"$offer_id",
+	// 	name: 1,
+	// 	ean: 1,
+	// 	advertiser: 1,
+	// 	image_large: 1,
+	// 	image_medium: 1,
+	// 	countSad: 1,
+	// 	countHappy: 1,
+	// 	totalReviews: 1,
+	// 	score: 1,
+	// 	price:1,
+	// 	price_display: 1,
+	// 	url: 1
+ //    });
   
 	var options = {
 	  //select: 'advertiser date',
-	  sort: { 
-	  	price_display: 'asc'
-	  },
+	  // sortBy: { 
+	  // 	price: 'asc'
+	  // },
 	  //lean: true,
 	  //offset: 10, 
 	  page: page,
