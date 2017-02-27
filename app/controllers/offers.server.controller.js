@@ -159,6 +159,10 @@ var filter_offers = function(filter,next){
     case 4:
         resp = {
         	price: 1,
+        	score: { 
+				$meta: "textScore" 
+			},
+			score:-1
 		};
         break;
 	};
