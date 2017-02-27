@@ -308,7 +308,7 @@ exports.listByEan = function(req,res){
 		ean:ean,
 	})
 	.group({ 
-		_id: '$merchantProductId',
+		_id: '$advertiser',
 		offer_id: { $first: "$_id" },
 		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
