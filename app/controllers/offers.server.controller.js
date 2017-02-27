@@ -195,7 +195,6 @@ exports.search = function(req,res){
 	.group({ 
 		_id: '$ean'	,
 		offer_id: { $first: "$_id" },
-		// merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
 		advertiser: { $first: "$advertiser" },
@@ -205,14 +204,13 @@ exports.search = function(req,res){
 		countHappy: { $first: "$countHappy" },
 		totalReviews: { $first: "$totalReviews" },
 		score: { $max: {$meta: "textScore" }},
-		price: { $min: "$price" },
+		price: { $first: "$price" },
 		price_display: { $min: "$price_display" },
 		category: { $first: "$category" },		
 	})
 	.project ({
         _id :0,
         _id:"$offer_id",
-        // merchantProductId:1,
 		name: 1,
 		ean: 1,
 		advertiser: 1,
@@ -324,6 +322,8 @@ exports.listByEan = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
 		url: { $first: "$url" },
+	}).sort({
+		price_display: -1
 	})
 	.project ({
         _id :0,
@@ -337,13 +337,11 @@ exports.listByEan = function(req,res){
 		countHappy: 1,
 		totalReviews: 1,
 		score: 1,
+		price:1,
 		price_display: 1,
 		url: 1
     })
-    .sort({
-		price_display: 1
-	});
-
+  
 	var options = {
 	  //select: 'advertiser date',
 	  // sort: { 
