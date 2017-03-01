@@ -32,7 +32,7 @@ module.exports = function(grunt){
 			}
 		},
 		mochaTest:{
-			//src:'app/tests/controllers/reviews.server.controller.tests.js',
+			//src:'app/tests/controllers/offers.server.controller.tests.js',
 			src:'app/tests/**/*.js',
 			options:{
 				reporter:'spec'

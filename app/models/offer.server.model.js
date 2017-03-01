@@ -36,7 +36,8 @@ var OfferSchema = new Schema({
   },
   countSad: Number,
   countHappy: Number,
-  totalReviews: Number
+  totalReviews: Number,
+  minorPriceEAN: String
 });
 
 // middleware to handle attributes before to save

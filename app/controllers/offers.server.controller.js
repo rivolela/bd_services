@@ -209,7 +209,8 @@ exports.search = function(req,res){
 		score: { $max: {$meta: "textScore" }},
 		price: { $first: "$price" },
 		price_display: { $min: "$price_display" },
-		category: { $first: "$category" },		
+		category: { $first: "$category" },
+		minorPriceEAN: { $first: "$minorPriceEAN" },			
 	})
 	.project ({
         _id :0,
@@ -225,11 +226,12 @@ exports.search = function(req,res){
 		score: 1,
 		price: 1,
 		price_display: 1,
-		category:1
-    }).sort(
+		category:1,
+		minorPriceEAN:1
+    })
+    .sort(
     	setFilter
   	);
-	
 
 	var options = {
 	  page: page,
