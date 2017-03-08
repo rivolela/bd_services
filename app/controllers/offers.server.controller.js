@@ -97,20 +97,6 @@ exports.getOffersBD = function(query,next){
 };
 
 
-// exports.validatePage = function(req,res,next,page){
-// 	console.log("validatePage >>",page);
-// 	// Article.findById(id).populate('creator','firstName lastName fullName').exec(function(err,article){
-// 	// 	if(err){
-// 	// 		return next(err);
-// 	// 	}
-// 	// 	if(!article){
-// 	// 		return next(new Error('Failed to load article' + id));			
-// 	// 	}
-// 	// 	req.article = article;
-// 	// 	next();
-// 	// });
-// 	next();
-// };
 var filter_offers = function(filter,next){
 
 	var resp;

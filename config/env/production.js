@@ -1,6 +1,7 @@
 module.exports = {
 	
 	// Production configuration options
+	// bd is set in heroku env
 	// db:'mongodb://bdeciding:rovel1954@ds035776.mlab.com:35776/heroku_5lt8spw4',
 	sessionSecret:'productSessionSecret',
 	connectid:'A3697E2455EA755B758F',

@@ -17,19 +17,19 @@ describe('Reviews Controller Unit Tests:',function(){
 					.expect(200)
 				.end(function(err,res){
 					console.log(res.body.total);
-					res.body.total.should.be.equal(9);
-					res.body.docs[0].should.have.property('_id','58656a9930ffc4570836986d');
+					res.body.total.should.be.equal(5);
+					res.body.docs[0].should.have.property('_id','581b368f8c409c7acb39a2f7');
 					res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
-					res.body.docs[0].should.have.property('author','Selma');
-					res.body.docs[0].should.have.property('date','1482112800000');
+					res.body.docs[0].should.have.property('author','Karla');
+					res.body.docs[0].should.have.property('date','1476835200000');
 					res.body.docs[0].should.have.property('ean','7891129246515');
 					res.body.docs[0].should.have.property('manufacturer','Consul');
-					res.body.docs[0].should.have.property('category','Frost Free');
-					res.body.docs[0].should.have.property('rating','5');
-					res.body.docs[0].should.have.property('location','São Paulo');
-					res.body.docs[0].should.have.property('description','Designe lindo lindo lindo, ah e mto fácil realizar limpeza rsrs');
-					res.body.docs[0].should.have.property('title','Excelente produto, especialmente pra cozinha pequena');
-					res.body.docs[0].should.have.property('dateBR','19/12/2016');
+					// res.body.docs[0].should.have.property('category','Frost Free');
+					res.body.docs[0].should.have.property('rating','4');
+					res.body.docs[0].should.have.property('location','Rj');
+					res.body.docs[0].should.have.property('description','Geladeira de pequeno porte, entretanto me atende. Supriu minhas necessidades. Embora a empresa que tenha feito a logistica tenha sido a Top Cargas, que nao possui rastreio, o produto chegou antes do prazo informado.');
+					res.body.docs[0].should.have.property('title','Gostei. Recomendo!');
+					res.body.docs[0].should.have.property('dateBR','19/10/2016');
 					done();
 			});
 		});

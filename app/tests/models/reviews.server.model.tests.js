@@ -7,10 +7,10 @@ var review;
 
 describe('Review Model Unit Tests:',function(){
 
-    it('Should not be able to get the review list == 1821 reviews',function(done){
+    it('Should not be able to get the review list == 13000 reviews',function(done){
       this.timeout(20000);
       Review.find({},function(err,reviews){
-        reviews.length.should.be.equal(17430);
+        reviews.length.should.be.equal(13000);
         done();
       });
     });

@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(9362);
+				res.body.total.should.be.equal(22601);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -37,9 +37,9 @@ describe('Offers Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
 				res.body.docs[0].should.have.property('image_large',null);
 				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/2498101-250-250");
-				res.body.docs[0].should.have.property('countSad',0);
-				res.body.docs[0].should.have.property('countHappy',6);
-				res.body.docs[0].should.have.property('totalReviews',6);
+				res.body.docs[0].should.have.property('countSad',6);
+				res.body.docs[0].should.have.property('countHappy',40);
+				res.body.docs[0].should.have.property('totalReviews',46);
 				res.body.docs[0].should.have.property('price_display',"R$ 2.998,00");
 				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?41049933C87969835&ULP=[[33598/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[A3697E2455EA755B758F]]");
 				done();
@@ -64,7 +64,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('countHappy',14);
 				res.body.docs[0].should.have.property('totalReviews',17);
 				res.body.docs[0].should.have.property('score',8.916666666666666);
-				res.body.docs[0].should.have.property('price',1379);
+				res.body.docs[0].should.have.property('price',1299);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.299,00");
 				res.body.docs[0].should.have.property('category',"Eletrodomesticos / Ar Condicionado / Split Quente e Frio");
 				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.299,00");
@@ -108,20 +108,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58b705b7de38371e442043ac");
+				res.body.docs[0].should.have.property('_id',"58bf906105fbd0040098851d");
 				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
 				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg');
 				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',2);
-				res.body.docs[0].should.have.property('countHappy',65);
-				res.body.docs[0].should.have.property('totalReviews',67);
+				res.body.docs[0].should.have.property('countSad',1);
+				res.body.docs[0].should.have.property('countHappy',32);
+				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
 				res.body.docs[0].should.have.property('price',2049);
 				// res.body.docs[0].should.have.property('price_display',"R$ 2.049,00");
 				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.549,00");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.879,99");
 				done();
 		});
 	});
@@ -135,20 +135,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58b705b7de38371e442043ac");
+				res.body.docs[0].should.have.property('_id',"58bf906105fbd0040098851d");
 				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
 				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg');
 				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',2);
-				res.body.docs[0].should.have.property('countHappy',65);
-				res.body.docs[0].should.have.property('totalReviews',67);
+				res.body.docs[0].should.have.property('countSad',1);
+				res.body.docs[0].should.have.property('countHappy',32);
+				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
 				res.body.docs[0].should.have.property('price',2049);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.549,00");
 				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.549,00");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.879,99");
 				done();
 		});
 	});
@@ -189,7 +189,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58b70569de38371e44204347");
+				res.body.docs[0].should.have.property('_id',"58bf905305fbd0040098849c");
 				res.body.docs[0].should.have.property('name','Apple iPhone 4 8GB Branco Desbloqueado, GPS, Câmera 5.0MP, Tela 3,5", MP3/MP4 Player, 3G, Wi-Fi e Bluetooth');
 				res.body.docs[0].should.have.property('ean',885909524105);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");

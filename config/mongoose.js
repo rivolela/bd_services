@@ -23,6 +23,7 @@ module.exports = function(){
 	// require('../app/models/article.server.model');
 	require('../app/models/offer.server.model');
 	require('../app/models/review.server.model');
+	require('../app/models/product.server.model');
 
 	return db;
 };

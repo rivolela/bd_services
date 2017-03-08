@@ -3,14 +3,13 @@ var app = require('../../../server.js'),
 	mongoose = require('mongoose'),
 	Offer = mongoose.model('Offer');
 
-var offer_crawler;
 
-describe('Offer Crawler Model Unit Tests:',function(){
+describe('Offer Model Unit Tests:',function(){
 
-	it('Should not be able to get the offer list == 969 offers ',function(done){
-		this.timeout(20000);
+	it('Should not be able to get the offer list == 22601 offers ',function(done){
+		this.timeout(40000);
 		Offer.find({},function(err,offers){
-			offers.length.should.be.equal(9362);
+			offers.length.should.be.equal(22601);
 			done();
 		});
 	});
