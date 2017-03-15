@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(22601);
+				res.body.total.should.be.equal(7049);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -47,27 +47,27 @@ describe('Offers Server Controller Unit Tests:',function(){
 	});
 
 
-	it('Should be able to find the product by query = Ar Condicionado Split Consul, Quente e Frio, 9000 BTUS, 220 V',function(done){
+	it('Should be able to find the product by query = smartphone Motorola Moto G 2º Geração DTV',function(done){
 		this.timeout(4000);
-		request(app).get('/api/offers/bd/query/Ar Condicionado Split Consul, Quente e Frio, 9000 BTUS, 220 V - CBZ09DB/page/1/limit/30/filter/1')
+		request(app).get('/api/offers/bd/query/smartphone Motorola Moto G 2º Geração DTV/page/1/limit/30/filter/1')
 			.set('Accept','application/json')
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(1);
-				res.body.docs[0].should.have.property('name',"Ar Condicionado Split Consul, Quente e Frio, 9000 BTUS, 220 V - CBZ09DB");
-				res.body.docs[0].should.have.property('ean',7891129234864);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large',"https://www.colombo.com.br/produtos/486252/486252_Split_Consug19_g.jpg");
-				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',3);
-				res.body.docs[0].should.have.property('countHappy',14);
-				res.body.docs[0].should.have.property('totalReviews',17);
-				res.body.docs[0].should.have.property('score',8.916666666666666);
-				res.body.docs[0].should.have.property('price',1299);
+				res.body.docs[0].should.have.property('name',"Smartphone Motorola Moto G 2º Geração DTV Colors Dual Chip 16GB - XT1069 Preto Bvolt");
+				res.body.docs[0].should.have.property('ean',7892597336555);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/9038774-250-250");
+				res.body.docs[0].should.have.property('countSad',21);
+				res.body.docs[0].should.have.property('countHappy',117);
+				res.body.docs[0].should.have.property('totalReviews',138);
+				res.body.docs[0].should.have.property('score',5.874999999999999);
+				res.body.docs[0].should.have.property('price',1173.5);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.299,00");
-				res.body.docs[0].should.have.property('category',"Eletrodomesticos / Ar Condicionado / Split Quente e Frio");
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.299,00");
+				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / Smartphones");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 766,99");
 				done();
 		});
 	});
@@ -80,21 +80,21 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58b705cade38371e442043df");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Cinza Espacial");
-				res.body.docs[0].should.have.property('ean',885909784301);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/779803/779803_iphone_5s_cinzaespacial_3_g.jpg');
+				res.body.total.should.be.equal(69);
+				res.body.docs[0].should.have.property('_id',"58c8e6d31414660400bedcf6");
+				res.body.docs[0].should.have.property('name',"IPhone SE Apple 64GB Dourado IOS 9 4G Touch Chip A9 e Câmera de 12MP");
+				res.body.docs[0].should.have.property('ean',888462802840);
+				res.body.docs[0].should.have.property('advertiser',"Girafa BR");
+				res.body.docs[0].should.have.property('image_large','http://www.girafa.com.br//visao/default/img/produtos/Telefonia/Celulares/84932-1466014082-iphone-se-apple-64gb-dourado-ios-9-4g-touch-chip-a9-e-camera-de-12mp-1.jpg');
 				res.body.docs[0].should.have.property('image_medium',null);
-				res.body.docs[0].should.have.property('countSad',1);
-				res.body.docs[0].should.have.property('countHappy',16);
-				res.body.docs[0].should.have.property('totalReviews',17);
-				res.body.docs[0].should.have.property('score',1.2738095238095237);
-				res.body.docs[0].should.have.property('price',2249);
+				res.body.docs[0].should.have.property('countSad',0);
+				res.body.docs[0].should.have.property('countHappy',10);
+				res.body.docs[0].should.have.property('totalReviews',10);
+				res.body.docs[0].should.have.property('score',1.2727272727272727);
+				res.body.docs[0].should.have.property('price',3379.9);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.499,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.499,00");
+				res.body.docs[0].should.have.property('category',"Telefonia");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.299,00");
 				done();
 		});
 	});
@@ -107,20 +107,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58bf906105fbd0040098851d");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
+				res.body.total.should.be.equal(69);
+				res.body.docs[0].should.have.property('_id',"58c8e6c81414660400bedc30");
+				res.body.docs[0].should.have.property('name','Smartphone Apple Iphone 5S 16Gb 4G iOS 8Mp Tela 4\'');
 				res.body.docs[0].should.have.property('ean',885909784608);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg');
-				res.body.docs[0].should.have.property('image_medium',null);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/11038311-250-250');
 				res.body.docs[0].should.have.property('countSad',1);
 				res.body.docs[0].should.have.property('countHappy',32);
 				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
-				res.body.docs[0].should.have.property('price',2049);
+				res.body.docs[0].should.have.property('price',2299.99);
 				// res.body.docs[0].should.have.property('price_display',"R$ 2.049,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
+				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.879,99");
 				done();
 		});
@@ -134,20 +134,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58bf906105fbd0040098851d");
-				res.body.docs[0].should.have.property('name',"iPhone 5S Apple, 4G, 16GB, 8MP, Single Chip - Prata");
+				res.body.total.should.be.equal(69);
+				res.body.docs[0].should.have.property('_id',"58c8e6c81414660400bedc30");
+				res.body.docs[0].should.have.property('name','Smartphone Apple Iphone 5S 16Gb 4G iOS 8Mp Tela 4\'');
 				res.body.docs[0].should.have.property('ean',885909784608);
-				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
-				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/779804/779804_iphone_5s_prata_3_g.jpg');
-				res.body.docs[0].should.have.property('image_medium',null);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/11038311-250-250');
 				res.body.docs[0].should.have.property('countSad',1);
 				res.body.docs[0].should.have.property('countHappy',32);
 				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',1.1964285714285714);
-				res.body.docs[0].should.have.property('price',2049);
+				res.body.docs[0].should.have.property('price',2299.99);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.549,00");
-				res.body.docs[0].should.have.property('category',"Smartphones / Apple / iPhone 5S");
+				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.879,99");
 				done();
 		});
@@ -161,21 +161,21 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58b70553de38371e44204326");
-				res.body.docs[0].should.have.property('name',"iPhone 6s Apple 32GB Dourado MN112BR/A");
-				res.body.docs[0].should.have.property('ean',190198057792);
+				res.body.total.should.be.equal(69);
+				res.body.docs[0].should.have.property('_id',"58c8e6c31414660400bedbfe");
+				res.body.docs[0].should.have.property('name',"iPhone 6s Apple 16 GB Rose Gold MKQM2BR/A");
+				res.body.docs[0].should.have.property('ean',888462562331);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/9869307-250-250");
+				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/9641971-250-250");
 				res.body.docs[0].should.have.property('countSad',2);
-				res.body.docs[0].should.have.property('countHappy',7);
-				res.body.docs[0].should.have.property('totalReviews',9);
-				res.body.docs[0].should.have.property('score',1.27);
-				res.body.docs[0].should.have.property('price',2899);
+				res.body.docs[0].should.have.property('countHappy',6);
+				res.body.docs[0].should.have.property('totalReviews',8);
+				res.body.docs[0].should.have.property('score',1.2692307692307692);
+				res.body.docs[0].should.have.property('price',2999);
 				// res.body.docs[0].should.have.property('price_display',"R$ 2.639,12");
 				res.body.docs[0].should.have.property('category','Telefonia / Celulares e Smartphones / iPhones');
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.639,12");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.999,00");
 				done();
 		});
 	});
@@ -188,8 +188,8 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(70);
-				res.body.docs[0].should.have.property('_id',"58bf905305fbd0040098849c");
+				res.body.total.should.be.equal(69);
+				res.body.docs[0].should.have.property('_id',"58c8e6cc1414660400bedc6b");
 				res.body.docs[0].should.have.property('name','Apple iPhone 4 8GB Branco Desbloqueado, GPS, Câmera 5.0MP, Tela 3,5", MP3/MP4 Player, 3G, Wi-Fi e Bluetooth');
 				res.body.docs[0].should.have.property('ean',885909524105);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");

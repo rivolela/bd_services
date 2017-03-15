@@ -40,3 +40,37 @@ exports.getByEAN = function(req,res){
     }
   });
 };
+
+
+exports.getByNameURL = function(req,res){
+
+  var paramNameUrl = String(req.params.nameurl || 0);
+  var page = Number(req.params.page || 0);
+  var query;
+  
+  query = {nameURL:paramNameUrl};
+
+  var options = {
+    //select: 'advertiser date',
+    // sort: { 
+    //  date: 'asc'
+    // },
+    //lean: true,
+    //offset: 10, 
+    page: 1,
+    limit: 1
+  };
+
+
+  Product.paginate(query,options,function(err, result) {
+    if(err){
+      console.log(err);
+      return res.status(400).send({
+        message: getErrorMessage(err)
+      });
+    }else{
+      console.log(result);
+      res.json(result);
+    }
+  });
+};
