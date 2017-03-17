@@ -196,7 +196,8 @@ exports.search = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $min: "$price_display" },
 		category: { $first: "$category" },
-		minorPriceEAN: { $first: "$minorPriceEAN" },			
+		minorPriceEAN: { $first: "$minorPriceEAN" },
+		product: { $first: "$product" },				
 	})
 	.project ({
         _id :0,
@@ -213,7 +214,8 @@ exports.search = function(req,res){
 		price: 1,
 		price_display: 1,
 		category:1,
-		minorPriceEAN:1
+		minorPriceEAN:1,
+		product:1
     })
     .sort(
     	setFilter
@@ -222,6 +224,7 @@ exports.search = function(req,res){
 	var options = {
 	  page: page,
 	  limit: limit,
+	  populate:"product"
 	  // sortBy:{
 	  // 	// score: -1,
 	  // 	// countSad: -1
@@ -229,12 +232,24 @@ exports.search = function(req,res){
 	};
 
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
+  		
   		if(err) {
   			return res.status(400).send({
 				message: getErrorMessage(err)
 			});
   		}else{
-  			res.json({docs:results,total:count,limit:limit,page:page,pages:pageCount});
+
+  			Offer.populate(results, { "path": "product",
+  				"select":"name ean image manufacturer countSad countHappy totalReviews departamentBD nameURL"}, 
+  				function(err,results_2) {
+			    	if (err) {
+			        	console.log("err >>",err);
+			        	throw err;
+			        }else{
+			        	console.log( JSON.stringify( results_2, undefined, 4 ) );
+			       		res.json({docs:results,total:count,limit:limit,page:page,pages:pageCount});
+			        }
+		    });
   		}
 	});
 };

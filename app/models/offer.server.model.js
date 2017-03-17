@@ -37,7 +37,11 @@ var OfferSchema = new Schema({
   countSad: Number,
   countHappy: Number,
   totalReviews: Number,
-  minorPriceEAN: String
+  minorPriceEAN: String,
+  product:{
+    type: Schema.ObjectId,
+    ref: 'Product'
+  }
 });
 
 // middleware to handle attributes before to save
