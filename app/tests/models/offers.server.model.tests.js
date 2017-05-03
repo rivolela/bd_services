@@ -6,10 +6,10 @@ var app = require('../../../server.js'),
 
 describe('Offer Model Unit Tests:',function(){
 
-	it('Should not be able to get the offer list == 7049 offers ',function(done){
+	it('Should not be able to get the offer list == 8967 offers ',function(done){
 		this.timeout(40000);
 		Offer.find({},function(err,offers){
-			offers.length.should.be.equal(7049);
+			offers.length.should.be.equal(8967);
 			done();
 		});
 	});

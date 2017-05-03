@@ -57,9 +57,9 @@ describe('Product Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('ean',7899466418121);
 				res.body.docs[0].should.have.property('manufacturer',"Philco");
 				res.body.docs[0].should.have.property('image',"http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=276347026");
-				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countSad',3);
 				res.body.docs[0].should.have.property('countHappy',8);
-				res.body.docs[0].should.have.property('totalReviews',10);
+				res.body.docs[0].should.have.property('totalReviews',11);
 				res.body.docs[0].should.have.property('departamentBD',"eletroportáteis");
 				res.body.docs[0].should.have.property('nameURL',"multiprocessador-philco-all-in-one-citrus-800w-branco");
 				done();

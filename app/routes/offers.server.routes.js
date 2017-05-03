@@ -7,7 +7,7 @@ module.exports = function(app){
 	app.route('/api/offers/bd/ean/:ean/page/:page/limit/:limit')
 	.get(offers_crawler.listByEan);
 
-	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit')
+	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.listByCategory);
 
 	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/filter/:filter')
@@ -16,6 +16,9 @@ module.exports = function(app){
 	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/')
 	.get(offers_crawler.search);
 	//.post(users.requireLogin,articles.create);
+	
+	app.route('/api/offers/bd/nameurl/:nameurl')
+	.get(offers_crawler.listByNameURL);
 
 	// app.route('/api/articles/:articleId')
 	// 	.get(articles.read)
