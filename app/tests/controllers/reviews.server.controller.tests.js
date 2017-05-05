@@ -34,6 +34,23 @@ describe('Reviews Controller Unit Tests:',function(){
 			});
 		});
 
+
+		it('Should be able to get review summary by ean',function(done){
+			request(app).get('/api/reviews/summary/ean/888462341479')
+				.set('Accept','application/json')
+				.expect('Content-Type',/json/)
+					.expect(200)
+				.end(function(err,res){
+					console.log(res.body.total);
+					res.body.total.should.be.equal(1);
+					res.body.docs[0].should.have.property('ean','888462341479');
+					res.body.docs[0].should.have.property('countSad',1);
+					res.body.docs[0].should.have.property('countHappy',5);
+					res.body.docs[0].should.have.property('totalReviews',6);
+					done();
+			});
+		});
+
 	});
 	
 });

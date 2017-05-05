@@ -117,4 +117,61 @@ exports.listByCategory = function(req,res){
 };
 
 
+exports.getReviewsSummaryByEan = function(req,res){
+
+	var ean = req.params.ean;
+	console.log(ean);
+
+  	    // find users above 18 by city 
+	var aggregate = Review.aggregate();
+
+	aggregate
+	.match({
+		ean:ean,
+	})
+    .group({ 
+		_id: '$ean',
+		ean: { $first: "$ean" },	
+		countSad:{$sum:{$cond: [ { $lt: ["$rating", 4 ] }, 1, 0]}},
+	    countHappy:{$sum:{$cond: [ { $gt: [ "$rating", 3 ] }, 1, 0]}},
+	    totalReviews:{$sum:1},
+	})
+	.project ({
+		_id :0,
+        ean: 1,
+        totalReviews:1,
+        countSad:1,
+        countHappy:1
+    });
+  
+	var options = {
+	  //select: 'advertiser date',
+	  // sortBy: { 
+	  // 	price: 'asc'
+	  // },
+	  //lean: true,
+	  //offset: 10, 
+	  // page: 1,
+	  limit: 1,
+	};
+
+	Review.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
+  		if(err) {
+  			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+  		}else{
+  			resp = {docs:results,
+  					total:count,
+  					// limit:limit,
+  					// page:page,
+  					pages:pageCount};
+
+  			res.json(resp);
+  		}
+	});    	
+};
+
+
+
 

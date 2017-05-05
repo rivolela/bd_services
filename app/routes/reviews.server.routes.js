@@ -9,4 +9,7 @@ module.exports = function(app){
 
 	app.route('/api/reviews/category/:category/page/:page/limit/:limit')
 	.get(reviews.listByCategory);
+
+	app.route('/api/reviews/summary/ean/:ean/')
+	.get(reviews.getReviewsSummaryByEan);
 };

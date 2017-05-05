@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
+var mongooseAggregatePaginate = require('mongoose-aggregate-paginate');
 
 var ReviewSchema = new Schema({
 	 ean: {
@@ -53,6 +54,8 @@ ReviewSchema.set('toObject',{
 });
 
 ReviewSchema.plugin(mongoosePaginate);
+
+ReviewSchema.plugin(mongooseAggregatePaginate);
 
 mongoose.model('Review',ReviewSchema);
 

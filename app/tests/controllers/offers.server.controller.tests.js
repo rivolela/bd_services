@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(8967);
+				res.body.total.should.be.equal(12115);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -30,18 +30,18 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(2);
-				res.body.docs[0].should.have.property('_id',"33598");
-				res.body.docs[0].should.have.property('name',"Geladeira/Refrigerador Electrolux Infinity DF80 553L 2 portas Frost Free Branco");
+				res.body.total.should.be.equal(1);
+				res.body.docs[0].should.have.property('_id',"148218");
+				res.body.docs[0].should.have.property('name',"Refrigerador/Geladeira Electrolux Infinity Frost Free, 2 Portas, 553 L - DF80");
 				res.body.docs[0].should.have.property('ean',7896584042719);
-				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
-				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium',"https://static.wmobjects.com.br/imgres/arquivos/ids/2498101-250-250");
+				res.body.docs[0].should.have.property('advertiser',"Lojas Colombo BR");
+				res.body.docs[0].should.have.property('image_large','https://www.colombo.com.br/produtos/148218/148218_refrigerador_DF80_electrolux_10_g.jpg');
+				res.body.docs[0].should.have.property('image_medium',null);
 				res.body.docs[0].should.have.property('countSad',6);
 				res.body.docs[0].should.have.property('countHappy',40);
 				res.body.docs[0].should.have.property('totalReviews',46);
-				res.body.docs[0].should.have.property('price_display',"R$ 3.098,00");
-				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?42246922C25572714&ULP=[[33598/sk?utm_medium=afiliados&utm_source=zanox&utm_campaign=xml_zanox&utm_term=zanox]]&zpar9=[[A3697E2455EA755B758F]]");
+				res.body.docs[0].should.have.property('price_display',"R$ 3.349,00");
+				res.body.docs[0].should.have.property('url',"http://ad.zanox.com/ppc/?42246970C43761669&ULP=[[/produto/Eletrodomesticos/Refrigerador-Geladeira-Electrolux-Frost-Free-2-Portas-553-Litros-Infinity-DF80?utm_campaign=xml_produtos&portal=4256CC361F2545F3488AFD861B38B9B6&utm_source=zanox&utm_medium=Afiliados]]&zpar9=[[A3697E2455EA755B758F]]");
 				done();
 		});
 	});
@@ -67,7 +67,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('price',1031.7);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.299,00");
 				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / Smartphones");
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.031,70");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 849,00");
 				// offer product
 				res.body.docs[0].product.should.have.property('_id',"58c92643bcbc89ad4abf6cbf");
 				res.body.docs[0].product.should.have.property('image',"https://static.wmobjects.com.br/imgres/arquivos/ids/9038774-250-250");
@@ -93,20 +93,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(69);
-				res.body.docs[0].should.have.property('_id',"5909645fad18f80400d7dce6");
-				res.body.docs[0].should.have.property('name',"iPhone SE Apple 64GB Prata iOS 9 4G Touch Chip A9 e Câmera de 12MP");
-				res.body.docs[0].should.have.property('ean',888462735537);
-				res.body.docs[0].should.have.property('advertiser','Girafa BR');
-				res.body.docs[0].should.have.property('image_large','http://www.girafa.com.br//visao/default/img/produtos/Telefonia/Celulares/84927-1465851082-iphone-se-apple-64gb-prata-ios-9-4g-touch-chip-a9-e-camera-de-12mp-1.jpg');
-				res.body.docs[0].should.have.property('image_medium',null);
+				res.body.docs[0].should.have.property('_id',"590bdcd155a4b504004db51d");
+				res.body.docs[0].should.have.property('name',"iPhone SE Apple com 16GB, Tela 4”, iOS 9, Sensor de Impressão Digital, Câmera iSight 12MP, Wi-Fi, 3G/4G, GPS, MP3, Bluetooth e NFC - Prateado");
+				res.body.docs[0].should.have.property('ean',888462734370);
+				res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=385910096');
 				res.body.docs[0].should.have.property('countSad',0);
-				res.body.docs[0].should.have.property('countHappy',4);
-				res.body.docs[0].should.have.property('totalReviews',4);
+				res.body.docs[0].should.have.property('countHappy',7);
+				res.body.docs[0].should.have.property('totalReviews',7);
 				res.body.docs[0].should.have.property('score',9.576923076923077);
-				res.body.docs[0].should.have.property('price',3399);
-				res.body.docs[0].should.have.property('price_display',"R$ 2.499,00");
-				res.body.docs[0].should.have.property('category','Telefonia');
-				res.body.docs[0].should.have.property('minorPriceEAN','R$ 2.499,00');
+				res.body.docs[0].should.have.property('price', 2249.1);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.249,10");
+				res.body.docs[0].should.have.property('category','iOS & iPhone');
+				res.body.docs[0].should.have.property('minorPriceEAN','R$ 2.249,10');
 				done();
 		});
 	});
@@ -120,17 +120,17 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(69);
-				res.body.docs[0].should.have.property('_id',"59096447ad18f80400d7dbc9");
-				res.body.docs[0].should.have.property('name','Smartphone Apple Iphone 5S 16Gb 4G iOS 8Mp Tela 4\'');
+				res.body.docs[0].should.have.property('_id',"590bdcc455a4b504004db409");
+				res.body.docs[0].should.have.property('name','iPhone 5s Apple 16GB Prata ME433BR/A');
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/11038311-250-250');
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/9831753-250-250');
 				res.body.docs[0].should.have.property('countSad',1);
 				res.body.docs[0].should.have.property('countHappy',32);
 				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',8.472222222222221);
-				res.body.docs[0].should.have.property('price',2299.99);
+				res.body.docs[0].should.have.property('price',1399);
 				res.body.docs[0].should.have.property('price_display',"R$ 1.399,00");
 				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.399,00");
@@ -147,17 +147,17 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(69);
-				res.body.docs[0].should.have.property('_id',"59096447ad18f80400d7dbc9");
-				res.body.docs[0].should.have.property('name','Smartphone Apple Iphone 5S 16Gb 4G iOS 8Mp Tela 4\'');
+				res.body.docs[0].should.have.property('_id',"590bdcc455a4b504004db409");
+				res.body.docs[0].should.have.property('name','iPhone 5s Apple 16GB Prata ME433BR/A');
 				res.body.docs[0].should.have.property('ean',885909784608);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/11038311-250-250');
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/9831753-250-250');
 				res.body.docs[0].should.have.property('countSad',1);
 				res.body.docs[0].should.have.property('countHappy',32);
 				res.body.docs[0].should.have.property('totalReviews',33);
 				res.body.docs[0].should.have.property('score',8.472222222222221);
-				res.body.docs[0].should.have.property('price',2299.99);
+				res.body.docs[0].should.have.property('price',1399);
 				res.body.docs[0].should.have.property('price_display',"R$ 1.399,00");
 				res.body.docs[0].should.have.property('category',"Telefonia / Celulares e Smartphones / iPhones");
 				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 1.399,00");
@@ -174,12 +174,12 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(69);
-				res.body.docs[0].should.have.property('_id',"5909645ead18f80400d7dcd2");
+				res.body.docs[0].should.have.property('_id',"590bdcd255a4b504004db527");
 				res.body.docs[0].should.have.property('name','iPhone 6s Apple com 16GB e Tela 4,7” HD com 3D Touch, iOS 9, Sensor Touch ID, Câmera iSight 12MP, Wi-Fi, 4G, GPS, Bluetooth e NFC - Ouro Rosa');
 				res.body.docs[0].should.have.property('ean',888462562331);
-				res.body.docs[0].should.have.property('advertiser','Extra BR');
+				res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=452748678');
+				res.body.docs[0].should.have.property('image_medium','http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=452748678');
 				res.body.docs[0].should.have.property('countSad',2);
 				res.body.docs[0].should.have.property('countHappy',6);
 				res.body.docs[0].should.have.property('totalReviews',8);
@@ -201,7 +201,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(69);
-				res.body.docs[0].should.have.property('_id',"59096454ad18f80400d7dc6d");
+				res.body.docs[0].should.have.property('_id',"590bdccb55a4b504004db492");
 				res.body.docs[0].should.have.property('name','Apple iPhone 4 8GB Branco Desbloqueado, GPS, Câmera 5.0MP, Tela 3,5", MP3/MP4 Player, 3G, Wi-Fi e Bluetooth');
 				res.body.docs[0].should.have.property('ean',885909524105);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
@@ -228,21 +228,21 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(61);
-				res.body.docs[0].should.have.property('_id',"5909aa020a47465117fb7e12");
-				res.body.docs[0].should.have.property('name','Tablet Android 4.1, Tela de 7", Processador 1.2GHz, 8GB, Wi-Fi, USB, HDMI – Bravva Planet Tab BV 4000RK - Preto');
-				res.body.docs[0].should.have.property('ean',7898994207658);
+				res.body.total.should.be.equal(14);
+				res.body.docs[0].should.have.property('_id',"590beabe55a4b504004db7ce");
+				res.body.docs[0].should.have.property('name','iPad AIR 2 16GB WI-FI 4G Tela Retina 9.7" Câmera 8MP Prata - Apple');
+				res.body.docs[0].should.have.property('ean',888462003803);
 				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/2669132-250-250');
-				res.body.docs[0].should.have.property('countSad',0);
-				res.body.docs[0].should.have.property('countHappy',42);
-				res.body.docs[0].should.have.property('totalReviews',42);
-				res.body.docs[0].should.have.property('price',229);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/5166310-250-250');
+				res.body.docs[0].should.have.property('countSad',1);
+				res.body.docs[0].should.have.property('countHappy',19);
+				res.body.docs[0].should.have.property('totalReviews',20);
+				res.body.docs[0].should.have.property('price',4873.24);
 				// res.body.docs[0].should.have.property('price_display',"R$ 1.489,00");
-				res.body.docs[0].should.have.property('category','Tablets / iPads e Tablets / Tablets');
+				res.body.docs[0].should.have.property('category','Tablets / iPads e Tablets / iPads');
 				res.body.docs[0].should.have.property('categoryBD','ipad apple');
-				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 229,00");
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 3.425,78");
 				done();
 		});
 	});

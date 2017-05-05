@@ -6,10 +6,10 @@ var app = require('../../../server.js'),
 
 describe('Product Model Unit Tests:',function(){
 
-	it('Should not be able to get the product list == 2872 products ',function(done){
+	it('Should not be able to get the product list == 2871 products ',function(done){
 		this.timeout(4000);
 		Product.find({},function(err,products){
-			products.length.should.be.equal(2872);
+			products.length.should.be.equal(2871);
 			done();
 		});
 	});
