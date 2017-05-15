@@ -216,6 +216,8 @@ exports.search = function(req,res){
 		price: 1,
 		price_display: 1,
 		category:1,
+		categoryBD:1,
+		departamentBD:1,
 		minorPriceEAN:1,
 		product:1
     })
