@@ -247,6 +247,36 @@ describe('Offers Server Controller Unit Tests:',function(){
 		});
 	});
 
+
+	it('Should be able to get the list of offers by departamentBD === smartphones',function(done){
+		this.timeout(4000);
+		request(app).get('/api/offers/bd/departament/smartphones/page/1/limit/50/filter/0')
+			.set('Accept','application/json')
+			.expect('Content-Type',/json/)
+				.expect(200)
+			.end(function(err,res){
+				res.body.total.should.be.equal(333);
+				res.body.docs[0].should.have.property('_id',"590bdccd55a4b504004db4ce");
+				res.body.docs[0].should.have.property('name','iPhone 6s Apple com Tela 4,7” HD, 32GB, 3D Touch, iOS 9, Sensor Touch ID, Câmera iSight 12MP, Wi-Fi, 4G, GPS, Bluetooth e NFC - Prateado');
+				res.body.docs[0].should.have.property('ean',190198057396);
+				res.body.docs[0].should.have.property('advertiser',"Extra BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=595986971');
+				res.body.docs[0].should.have.property('countSad',0);
+				res.body.docs[0].should.have.property('countHappy',10);
+				res.body.docs[0].should.have.property('totalReviews',10);
+				res.body.docs[0].should.have.property('price',2999);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.999,00");
+				res.body.docs[0].should.have.property('category','iOS & iPhone');
+				res.body.docs[0].should.have.property('categoryBD','iphone');
+				res.body.docs[0].should.have.property('departamentBD','smartphones');
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.999,00");
+				// offer product
+				res.body.docs[0].product.should.have.property('_id',"58c926acbcbc89ad4abf6dda");
+				done();
+		});
+	});
+
 });
 
 

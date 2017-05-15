@@ -10,6 +10,9 @@ module.exports = function(app){
 	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.listByCategory);
 
+	app.route('/api/offers/bd/departament/:departament/page/:page/limit/:limit/filter/:filter')
+	.get(offers_crawler.listByDepartament);
+
 	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.search);
 
