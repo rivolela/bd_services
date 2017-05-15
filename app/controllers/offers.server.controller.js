@@ -196,6 +196,8 @@ exports.search = function(req,res){
 		price: { $first: "$price" },
 		price_display: { $min: "$price_display" },
 		category: { $first: "$category" },
+		categoryBD: { $first: "$categoryBD" },
+		departamentBD: { $first: "$departamentBD" },
 		minorPriceEAN: { $first: "$minorPriceEAN" },
 		product: { $first: "$product" },				
 	})
