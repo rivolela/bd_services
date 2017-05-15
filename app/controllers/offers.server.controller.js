@@ -176,10 +176,10 @@ exports.search = function(req,res){
 
 	aggregate
 	.match({
-		$text:{
-			$search:"\"" + query + "\""
-			// $language:'pt'
-		}
+		$and:[{
+			$text:{$search:"\"" + query + "\""},
+			product:{$ne:null}
+		}]
 	})
 	.group({ 
 		_id: '$ean'	,
@@ -397,7 +397,7 @@ exports.listByCategory = function(req,res){
 
 	aggregate
 	.match({
-		categoryBD:category,
+		$and:[{categoryBD:category,product:{$ne:null}}],
 	})
 	.group({ 
 		_id: '$ean'	,
