@@ -182,7 +182,8 @@ exports.search = function(req,res){
 		}]
 	})
 	.group({ 
-		_id: '$ean'	,
+		_id: {ean:'$ean',price:	"$minorPriceEAN"},
+		 // { day: { $dayOfYear: "$date"}, year: { $year: "$date" } },
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
