@@ -200,6 +200,7 @@ exports.search = function(req,res){
 		categoryBD: { $first: "$categoryBD" },
 		departamentBD: { $first: "$departamentBD" },
 		minorPriceEAN: { $first: "$minorPriceEAN" },
+		urk: { $first: "$url" },
 		product: { $first: "$product" },				
 	})
 	.project ({
@@ -218,6 +219,7 @@ exports.search = function(req,res){
 		price_display: 1,
 		category:1,
 		categoryBD:1,
+		url: 1,
 		departamentBD:1,
 		minorPriceEAN:1,
 		product:1
