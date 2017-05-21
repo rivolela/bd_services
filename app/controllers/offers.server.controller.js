@@ -462,6 +462,7 @@ exports.listByCategory = function(req,res){
 	  // }
 	};
 
+
 	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
   		
   		if(err) {
