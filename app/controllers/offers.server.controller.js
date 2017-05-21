@@ -407,7 +407,7 @@ exports.listByCategory = function(req,res){
 		$and:[{categoryBD:category,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: '$ean'	,
+		_id: {ean:'$ean',price:	"$minorPriceEAN"},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -424,6 +424,7 @@ exports.listByCategory = function(req,res){
 		categoryBD: { $first: "$categoryBD" },
 		departamentBD: { $first: "$departamentBD" },
 		minorPriceEAN: { $first: "$minorPriceEAN" },
+		url: { $first: "$url" },
 		product: { $first: "$product" },				
 	})
 	.project ({
@@ -444,6 +445,7 @@ exports.listByCategory = function(req,res){
 		categoryBD:1,
 		departamentBD:1,
 		minorPriceEAN:1,
+		url: 1,
 		product:1
     })
     .sort(
@@ -505,7 +507,7 @@ exports.listByDepartament = function(req,res){
 		$and:[{departamentBD:departament,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: '$ean'	,
+		_id: {ean:'$ean',price:	"$minorPriceEAN"},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -522,6 +524,7 @@ exports.listByDepartament = function(req,res){
 		categoryBD: { $first: "$categoryBD" },
 		departamentBD: { $first: "$departamentBD" },
 		minorPriceEAN: { $first: "$minorPriceEAN" },
+		url: { $first: "$url" },
 		product: { $first: "$product" },				
 	})
 	.project ({
@@ -542,6 +545,7 @@ exports.listByDepartament = function(req,res){
 		categoryBD:1,
 		departamentBD:1,
 		minorPriceEAN:1,
+		url: 1,
 		product:1
     })
     .sort(
