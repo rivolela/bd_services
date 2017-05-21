@@ -200,7 +200,7 @@ exports.search = function(req,res){
 		categoryBD: { $first: "$categoryBD" },
 		departamentBD: { $first: "$departamentBD" },
 		minorPriceEAN: { $first: "$minorPriceEAN" },
-		urk: { $first: "$url" },
+		url: { $first: "$url" },
 		product: { $first: "$product" },				
 	})
 	.project ({
