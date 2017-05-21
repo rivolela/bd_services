@@ -182,7 +182,7 @@ exports.search = function(req,res){
 		}]
 	})
 	.group({ 
-		_id: {ean:'$ean',price:	"$minorPriceEAN"},
+		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
 		 // { day: { $dayOfYear: "$date"}, year: { $year: "$date" } },
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
@@ -407,7 +407,7 @@ exports.listByCategory = function(req,res){
 		$and:[{categoryBD:category,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: {ean:'$ean',price:	"$minorPriceEAN"},
+		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -507,7 +507,7 @@ exports.listByDepartament = function(req,res){
 		$and:[{departamentBD:departament,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: {ean:'$ean',price:	"$minorPriceEAN"},
+		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
