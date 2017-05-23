@@ -7,16 +7,36 @@ module.exports = function(app){
 	app.route('/api/offers/bd/ean/:ean/page/:page/limit/:limit')
 	.get(offers_crawler.listByEan);
 
+	/** Category  */
 	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.listByCategory);
+
+	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit/order/:order')
+	.get(offers_crawler.listByCategory);
+
+	app.route('/api/offers/bd/category/:category/page/:page/limit/:limit/order/:order/filter/:filter')
+	.get(offers_crawler.listByCategory);
+
+
+	/** Departament  */
+	app.route('/api/offers/bd/departament/:departament/page/:page/limit/:limit/order/:order')
+	.get(offers_crawler.listByDepartament);
 
 	app.route('/api/offers/bd/departament/:departament/page/:page/limit/:limit/filter/:filter')
 	.get(offers_crawler.listByDepartament);
 
-	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/filter/:filter')
+	app.route('/api/offers/bd/departament/:departament/page/:page/limit/:limit/order/:order/filter/:filter')
+	.get(offers_crawler.listByDepartament);
+
+
+	/** Search  */
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/order/:order/filter/:filter')
 	.get(offers_crawler.search);
 
-	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/')
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/order/:order/')
+	.get(offers_crawler.search);
+
+	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/filter/:filter/')
 	.get(offers_crawler.search);
 	//.post(users.requireLogin,articles.create);
 	
@@ -31,3 +51,4 @@ module.exports = function(app){
 	// app.param('articleId',articles.articleByID);
 	// app.param('page',offers_crawler.validatePage);
 };
+

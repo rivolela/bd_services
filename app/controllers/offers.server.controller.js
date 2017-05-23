@@ -158,19 +158,84 @@ var filter_offers = function(filter,next){
 }
 
 
+var orderBy = function(order,next){
+
+	var resp;
+
+    switch(order) {
+	// order by higher score
+    case 0:
+        resp = {
+			score: { 
+				$meta: "textScore" 
+			},
+			score: -1
+		};
+		break;
+	// order by total of reviews and after higher score
+    case 1:
+        resp = {
+        	totalReviews: -1,
+        	score: { 
+				$meta: "textScore" 
+			},
+			score: -1
+		};
+        break;
+    // order by total of countHappy and after higher score
+    case 2:
+        resp = {
+        	countHappy: -1,
+        	score: { 
+				$meta: "textScore" 
+			},
+        	score: -1,
+  		};
+        break;
+    // order by total of countSad and after higher score
+    case 3:
+        resp = {
+        	countSad: -1,
+        	score: { 
+				$meta: "textScore" 
+			},
+			score:-1
+		};
+        break;    
+	// filter by minor price_display
+    case 4:
+        resp = {
+        	price: 1,
+        	score: { 
+				$meta: "textScore" 
+			},
+			score:-1
+		};
+        break;
+	};
+
+	console.log("resp",resp);
+	return next(resp);
+}
+
+
 exports.search = function(req,res){
 
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
     var query = String(req.params.query);
     var filter = Number(req.params.filter || 0);
+    var order = Number(req.params.order || 0);
     var aggregate = Offer.aggregate();
     var setFilter;
     
     console.log("filter",filter);
     console.log("query >>" , query);
 
-    filter_offers(filter,function(respFilter){
+    // filter_offers(filter,function(respFilter){
+    // 	setFilter = respFilter;
+    // });
+    orderBy(order,function(respFilter){
     	setFilter = respFilter;
     });
 
@@ -392,13 +457,19 @@ exports.listByCategory = function(req,res){
     var limit = Number(req.params.limit || 10);
     var category = String(req.params.category);
     var filter = Number(req.params.filter || 0);
+    var order = Number(req.params.order || 0);
     var aggregate = Offer.aggregate();
     var setFilter;
     
     console.log("filter",filter);
+    console.log("order",order);
     console.log("category >>" , category);
 
-    filter_offers(filter,function(respFilter){
+    // filter_offers(filter,function(respFilter){
+    // 	setFilter = respFilter;
+    // });
+
+    orderBy(order,function(respFilter){
     	setFilter = respFilter;
     });
 
@@ -493,13 +564,17 @@ exports.listByDepartament = function(req,res){
     var limit = Number(req.params.limit || 10);
     var departament = String(req.params.departament);
     var filter = Number(req.params.filter || 0);
+    var order = Number(req.params.order || 0);
     var aggregate = Offer.aggregate();
     var setFilter;
     
     console.log("filter",filter);
     console.log("departament >>" , departament);
 
-    filter_offers(filter,function(respFilter){
+    // filter_offers(filter,function(respFilter){
+    // 	setFilter = respFilter;
+    // });
+    orderBy(order,function(respFilter){
     	setFilter = respFilter;
     });
 
