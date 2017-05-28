@@ -29,6 +29,17 @@ module.exports = function(app){
 	.get(offers_crawler.listByDepartament);
 
 
+	/** Brand  */
+	app.route('/api/offers/bd/brand/:brand/page/:page/limit/:limit/order/:order')
+	.get(offers_crawler.listByBrand);
+
+	app.route('/api/offers/bd/brand/:brand/page/:page/limit/:limit/filter/:filter')
+	.get(offers_crawler.listByBrand);
+
+	app.route('/api/offers/bd/brand/:brand/page/:page/limit/:limit/order/:order/filter/:filter')
+	.get(offers_crawler.listByBrand);
+
+
 	/** Search  */
 	app.route('/api/offers/bd/query/:query/page/:page/limit/:limit/order/:order/filter/:filter')
 	.get(offers_crawler.search);

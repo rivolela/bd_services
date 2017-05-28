@@ -220,7 +220,6 @@ describe('Offers Server Controller Unit Tests:',function(){
 	});
 
 
-
 	it('Should be able to get the list of offers by categoryBD === tablet',function(done){
 		this.timeout(4000);
 		request(app).get('/api/offers/bd/category/ipad apple/page/1/limit/50/order/1')
@@ -277,9 +276,36 @@ describe('Offers Server Controller Unit Tests:',function(){
 		});
 	});
 
+
+	it('Should be able to get the list of offers by brand === brastemp',function(done){
+		this.timeout(4000);
+		request(app).get('/api/offers/bd/brand/brastemp/page/1/limit/50/order/0')
+			.set('Accept','application/json')
+			.expect('Content-Type',/json/)
+				.expect(200)
+			.end(function(err,res){
+				res.body.total.should.be.equal(366);
+				res.body.docs[0].should.have.property('_id',"590bc13755a4b504004d994c");
+				res.body.docs[0].should.have.property('name','Fogão de Piso 5 Bocas Brastemp Ative Top Glass BFS5VAR Inox Quadri-Chama Timer Grill');
+				res.body.docs[0].should.have.property('ean',7891129233829);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/3862804-250-250');
+				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countHappy',10);
+				res.body.docs[0].should.have.property('totalReviews',12);
+				res.body.docs[0].should.have.property('price',2498);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.498,00");
+				res.body.docs[0].should.have.property('category','Eletrodomésticos / Fogões / Fogões 5 bocas');
+				res.body.docs[0].should.have.property('categoryBD','fogão');
+				res.body.docs[0].should.have.property('departamentBD','eletrodomésticos');
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.498,00");
+				// offer product
+				res.body.docs[0].product.should.have.property('_id',"58c91e9bbcbc89ad4abf5823");
+				done();
+		});
+	});
+
 });
 
-
-
-
-
+ 

@@ -662,6 +662,114 @@ exports.listByDepartament = function(req,res){
 };
 
 
+exports.listByBrand = function(req,res){
+
+	var page = Number(req.params.page || 0);
+    var limit = Number(req.params.limit || 10);
+    var brand = String(req.params.brand);
+    var filter = Number(req.params.filter || 0);
+    var order = Number(req.params.order || 0);
+    var aggregate = Offer.aggregate();
+    var setFilter;
+    
+    console.log("filter",filter);
+    console.log("brand >>" , brand);
+
+    // filter_offers(filter,function(respFilter){
+    // 	setFilter = respFilter;
+    // });
+    orderBy(order,function(respFilter){
+    	setFilter = respFilter;
+    });
+
+	aggregate
+	.match({
+		$and:[{manufacturer: { $regex : new RegExp(brand, "i") } ,product:{$ne:null}}],
+		// d( { foo: /^bar$/i } );
+		// $text:{$search:"\" + query + "\""},
+	})
+	.group({ 
+		_id: {ean:'$ean',advertiser:"$advertiser",minorPriceEAN:"$minorPriceEAN"},
+		offer_id: { $first: "$_id" },
+		name: { $first: "$name" },
+		ean: { $first: "$ean" },
+		advertiser: { $first: "$advertiser" },
+		image_large: { $first: "$image_large" },
+		image_medium: { $first: "$image_medium" },
+		countSad: { $first: "$countSad" },
+		countHappy: { $first: "$countHappy" },
+		totalReviews: { $first: "$totalReviews" },
+		score: { $max: {$meta: "textScore" }},
+		price: { $first: "$price" },
+		price_display: { $min: "$price_display" },
+		category: { $first: "$category" },
+		categoryBD: { $first: "$categoryBD" },
+		departamentBD: { $first: "$departamentBD" },
+		minorPriceEAN: { $first: "$minorPriceEAN" },
+		url: { $first: "$url" },
+		manufacturer:{ $first: "$manufacturer" },
+		product: { $first: "$product" },				
+	})
+	.project ({
+        _id :0,
+        _id:"$offer_id",
+		name: 1,
+		ean: 1,
+		advertiser: 1,
+		image_large: 1,
+		image_medium: 1,
+		countSad: 1,
+		countHappy: 1,
+		totalReviews: 1,
+		score: 1,
+		price: 1,
+		price_display: 1,
+		category:1,
+		categoryBD:1,
+		departamentBD:1,
+		manufacturer:1,
+		minorPriceEAN:1,
+		url: 1,
+		product:1
+    })
+    .sort(
+    	setFilter
+  	);
+
+	var options = {
+	  page: page,
+	  limit: limit,
+	  populate:"product"
+	  // sortBy:{
+	  // 	// score: -1,
+	  // 	// countSad: -1
+	  // }
+	};
+
+	Offer.aggregatePaginate(aggregate, options, function(err, results, pageCount, count) {
+  		
+  		if(err) {
+  			return res.status(400).send({
+				message: getErrorMessage(err)
+			});
+  		}else{
+
+  			Offer.populate(results, { "path": "product",
+  				"select":"name ean image manufacturer countSad countHappy totalReviews departamentBD nameURL"}, 
+  				function(err,results_2) {
+			    	if (err) {
+			        	console.log("err >>",err);
+			        	throw err;
+			        }else{
+			        	console.log( JSON.stringify( results_2, undefined, 4 ) );
+			       		res.json({docs:results,total:count,limit:limit,page:page,pages:pageCount});
+			        }
+		    });
+  		}
+	});
+};
+
+
 exports.listByNameURL = function(req,res){
 
   var paramNameUrl = String(req.params.nameurl || 0);
