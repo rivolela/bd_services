@@ -47,6 +47,11 @@ describe('Reviews Controller Unit Tests:',function(){
 					res.body.docs[0].should.have.property('countSad',1);
 					res.body.docs[0].should.have.property('countHappy',5);
 					res.body.docs[0].should.have.property('totalReviews',6);
+					res.body.docs[0].should.have.property('totalWorstRating',1);
+					res.body.docs[0].should.have.property('totalBestRating',25);
+					res.body.docs[0].should.have.property('worstRating',1);
+					res.body.docs[0].should.have.property('bestRating',5);
+					res.body.docs[0].should.have.property('ratingValue',4.33);
 					done();
 			});
 		});
@@ -54,6 +59,8 @@ describe('Reviews Controller Unit Tests:',function(){
 	});
 	
 });
+
+
 
 
 

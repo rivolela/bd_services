@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+ 	StringUtile = require('../utile/string.server.utile.js');
 	Offer = mongoose.model('Offer');
 
 
@@ -455,7 +456,8 @@ exports.listByCategory = function(req,res){
 
 	var page = Number(req.params.page || 0);
     var limit = Number(req.params.limit || 10);
-    var category = String(req.params.category);
+    var paramCategory =  String(req.params.category);
+    var category = StringparamCategory.replace(/\s/g,"_");
     var filter = Number(req.params.filter || 0);
     var order = Number(req.params.order || 0);
     var aggregate = Offer.aggregate();
@@ -685,8 +687,6 @@ exports.listByBrand = function(req,res){
 	aggregate
 	.match({
 		$and:[{manufacturer: { $regex : new RegExp(brand, "i") } ,product:{$ne:null}}],
-		// d( { foo: /^bar$/i } );
-		// $text:{$search:"\" + query + "\""},
 	})
 	.group({ 
 		_id: {ean:'$ean',advertiser:"$advertiser",minorPriceEAN:"$minorPriceEAN"},

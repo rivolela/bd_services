@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
 	Review = mongoose.model('Review');
+	round = require('mongo-round');
 
 
 var getErrorMessage = function(err){
@@ -135,13 +136,23 @@ exports.getReviewsSummaryByEan = function(req,res){
 		countSad:{$sum:{$cond: [ { $lt: ["$rating", 4 ] }, 1, 0]}},
 	    countHappy:{$sum:{$cond: [ { $gt: [ "$rating", 3 ] }, 1, 0]}},
 	    totalReviews:{$sum:1},
+	    totalWorstRating: {$sum:{$cond: [ { $lt: [ "$rating", 3 ] }, "$rating", 0]}},
+	    totalBestRating:{$sum:{$cond: [ { $gt: [ "$rating", 3 ] }, "$rating", 0]}},
 	})
 	.project ({
 		_id :0,
         ean: 1,
         totalReviews:1,
         countSad:1,
-        countHappy:1
+        countHappy:1,
+        totalWorstRating:1,
+        totalBestRating:1,
+        ratingValue:round({$avg:{$divide:[
+        				{$sum: ["$totalWorstRating", "$totalBestRating"]},
+        				"$totalReviews"]}
+        			},2),
+        worstRating:{$avg:{$divide:["$totalWorstRating", "$countSad"]}},
+        bestRating:{$avg:{$divide:["$totalBestRating", "$countHappy"]}},	 
     });
   
 	var options = {
