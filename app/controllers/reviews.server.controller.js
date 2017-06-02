@@ -136,7 +136,7 @@ exports.getReviewsSummaryByEan = function(req,res){
 		countSad:{$sum:{$cond: [ { $lt: ["$rating", 4 ] }, 1, 0]}},
 	    countHappy:{$sum:{$cond: [ { $gt: [ "$rating", 3 ] }, 1, 0]}},
 	    totalReviews:{$sum:1},
-	    totalWorstRating: {$sum:{$cond: [ { $lt: [ "$rating", 4 ] }, "$rating", 0]}},
+	    totalWorstRating: {$sum:{$cond: [ { $lt: [ "$rating", 4 ] },"$rating", 0]}},
 	    totalBestRating:{$sum:{$cond: [ { $gt: [ "$rating", 3 ] }, "$rating", 0]}}
 	})
 	.project ({
@@ -151,8 +151,8 @@ exports.getReviewsSummaryByEan = function(req,res){
         				{$sum: ["$totalWorstRating", "$totalBestRating"]},
         				"$totalReviews"]}
         			},2),
-        worstRating:{$cond:[{$gt:["$countSad",1]},{$avg:{$divide:["$totalWorstRating","$countSad"]}}, 0]},
-        bestRating:{$cond:[{$gt:["$countHappy",1]},{$avg:{$divide:["$totalBestRating", "$countHappy"]}}, 0]},
+        worstRating:round({$cond:[{$gt:["$countSad",0]},{$avg:{$divide:["$totalWorstRating","$countSad"]}}, 0]},2),
+        bestRating:round({$cond:[{$gt:["$countHappy",0]},{$avg:{$divide:["$totalBestRating", "$countHappy"]}}, 0]},2),
     });
   
 	var options = {

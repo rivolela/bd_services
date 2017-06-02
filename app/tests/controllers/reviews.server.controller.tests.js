@@ -35,7 +35,7 @@ describe('Reviews Controller Unit Tests:',function(){
 		});
 
 
-		it('Should be able to get review summary by ean',function(done){
+		it('Should be able to get review summary by ean >>',function(done){
 			request(app).get('/api/reviews/summary/ean/888462341479')
 				.set('Accept','application/json')
 				.expect('Content-Type',/json/)

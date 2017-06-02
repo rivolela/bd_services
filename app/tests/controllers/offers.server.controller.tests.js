@@ -15,7 +15,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 			.expect('Content-Type',/json/)
 				.expect(200)
 			.end(function(err,res){
-				res.body.total.should.be.equal(12115);
+				res.body.total.should.be.equal(13958);
 				// res.body.docs[0].should.have.property('merchantProductId',9600910;
 				// res.body.docs[0].should.have.property('price_br',"R$ 1499,00");
 				done();
@@ -93,20 +93,20 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(228);
-				res.body.docs[0].should.have.property('_id',"590bdcd155a4b504004db51f");
-				res.body.docs[0].should.have.property('name',"iPhone SE Apple com 16GB, Tela 4”, iOS 9, Sensor de Impressão Digital, Câmea iSight 12MP, Wi-Fi, 3G/4G, GPS, MP3, Bluetooth e NFC - Dourado");
-				res.body.docs[0].should.have.property('ean',888462801768);
-				res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
+				res.body.docs[0].should.have.property('_id',"590bdccd55a4b504004db4be");
+				res.body.docs[0].should.have.property('name',"iPhone SE Apple com 16GB, Tela 4”, iOS 9, Sensor de Impressão Digital, Câmera iSight 12MP, Wi-Fi, 3G/4G, GPS, MP3, Bluetooth e NFC - Prateado");
+				res.body.docs[0].should.have.property('ean',888462734370);
+				res.body.docs[0].should.have.property('advertiser','Extra BR');
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=385910069');
+				res.body.docs[0].should.have.property('image_medium','http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=385910096');
 				res.body.docs[0].should.have.property('countSad',0);
-				res.body.docs[0].should.have.property('countHappy',4);
-				res.body.docs[0].should.have.property('totalReviews',4);
+				res.body.docs[0].should.have.property('countHappy',7);
+				res.body.docs[0].should.have.property('totalReviews',7);
 				res.body.docs[0].should.have.property('score',9.576923076923077);
 				res.body.docs[0].should.have.property('price', 2249.1);
 				res.body.docs[0].should.have.property('price_display',"R$ 2.249,10");
 				res.body.docs[0].should.have.property('category','iOS & iPhone');
-				res.body.docs[0].should.have.property('minorPriceEAN','R$ 2.219,88');
+				res.body.docs[0].should.have.property('minorPriceEAN','R$ 2.249,10');
 				done();
 		});
 	});
@@ -174,12 +174,12 @@ describe('Offers Server Controller Unit Tests:',function(){
 				.expect(200)
 			.end(function(err,res){
 				res.body.total.should.be.equal(228);
-				res.body.docs[0].should.have.property('_id',"590bdcd255a4b504004db527");
+				res.body.docs[0].should.have.property('_id',"590bdccd55a4b504004db4ba");
 				res.body.docs[0].should.have.property('name','iPhone 6s Apple com 16GB e Tela 4,7” HD com 3D Touch, iOS 9, Sensor Touch ID, Câmera iSight 12MP, Wi-Fi, 4G, GPS, Bluetooth e NFC - Ouro Rosa');
 				res.body.docs[0].should.have.property('ean',888462562331);
-				res.body.docs[0].should.have.property('advertiser','Pontofrio BR');
+				res.body.docs[0].should.have.property('advertiser','Extra BR');
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','http://www.pontofrio-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=452748678');
+				res.body.docs[0].should.have.property('image_medium','http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=452748678');
 				res.body.docs[0].should.have.property('countSad',2);
 				res.body.docs[0].should.have.property('countHappy',6);
 				res.body.docs[0].should.have.property('totalReviews',8);
@@ -260,7 +260,7 @@ describe('Offers Server Controller Unit Tests:',function(){
 				res.body.docs[0].should.have.property('ean',7892509087377);
 				res.body.docs[0].should.have.property('advertiser',"Extra BR");
 				res.body.docs[0].should.have.property('image_large',null);
-				res.body.docs[0].should.have.property('image_medium','http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=563170954');
+				res.body.docs[0].should.have.property('image_medium',"http://www.extra-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=563170954");
 				res.body.docs[0].should.have.property('countSad',0);
 				res.body.docs[0].should.have.property('countHappy',2);
 				res.body.docs[0].should.have.property('totalReviews',2);
@@ -277,34 +277,34 @@ describe('Offers Server Controller Unit Tests:',function(){
 	});
 
 
-	// it('Should be able to get the list of offers by brand === brastemp',function(done){
-	// 	this.timeout(4000);
-	// 	request(app).get('/api/offers/bd/brand/brastemp/page/1/limit/50/order/0')
-	// 		.set('Accept','application/json')
-	// 		.expect('Content-Type',/json/)
-	// 			.expect(200)
-	// 		.end(function(err,res){
-	// 			res.body.total.should.be.equal(366);
-	// 			res.body.docs[0].should.have.property('_id',"590bc13755a4b504004d994c");
-	// 			res.body.docs[0].should.have.property('name','Fogão de Piso 5 Bocas Brastemp Ative Top Glass BFS5VAR Inox Quadri-Chama Timer Grill');
-	// 			res.body.docs[0].should.have.property('ean',7891129233829);
-	// 			res.body.docs[0].should.have.property('advertiser',"Walmart BR");
-	// 			res.body.docs[0].should.have.property('image_large',null);
-	// 			res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/3862804-250-250');
-	// 			res.body.docs[0].should.have.property('countSad',2);
-	// 			res.body.docs[0].should.have.property('countHappy',10);
-	// 			res.body.docs[0].should.have.property('totalReviews',12);
-	// 			res.body.docs[0].should.have.property('price',2498);
-	// 			res.body.docs[0].should.have.property('price_display',"R$ 2.498,00");
-	// 			res.body.docs[0].should.have.property('category','Eletrodomésticos / Fogões / Fogões 5 bocas');
-	// 			res.body.docs[0].should.have.property('categoryBD','fogão');
-	// 			res.body.docs[0].should.have.property('departamentBD','eletrodomésticos');
-	// 			res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.498,00");
-	// 			// offer product
-	// 			res.body.docs[0].product.should.have.property('_id',"58c91e9bbcbc89ad4abf5823");
-	// 			done();
-	// 	});
-	// });
+	it('Should be able to get the list of offers by brand === brastemp',function(done){
+		this.timeout(4000);
+		request(app).get('/api/offers/bd/brand/brastemp/page/1/limit/50/order/0')
+			.set('Accept','application/json')
+			.expect('Content-Type',/json/)
+				.expect(200)
+			.end(function(err,res){
+				res.body.total.should.be.equal(366);
+				res.body.docs[0].should.have.property('_id',"590bc13755a4b504004d994c");
+				res.body.docs[0].should.have.property('name','Fogão de Piso 5 Bocas Brastemp Ative Top Glass BFS5VAR Inox Quadri-Chama Timer Grill');
+				res.body.docs[0].should.have.property('ean',7891129233829);
+				res.body.docs[0].should.have.property('advertiser',"Walmart BR");
+				res.body.docs[0].should.have.property('image_large',null);
+				res.body.docs[0].should.have.property('image_medium','https://static.wmobjects.com.br/imgres/arquivos/ids/3862804-250-250');
+				res.body.docs[0].should.have.property('countSad',2);
+				res.body.docs[0].should.have.property('countHappy',10);
+				res.body.docs[0].should.have.property('totalReviews',12);
+				res.body.docs[0].should.have.property('price',2498);
+				res.body.docs[0].should.have.property('price_display',"R$ 2.498,00");
+				res.body.docs[0].should.have.property('category','Eletrodomésticos / Fogões / Fogões 5 bocas');
+				res.body.docs[0].should.have.property('categoryBD','fogão');
+				res.body.docs[0].should.have.property('departamentBD','eletrodomésticos');
+				res.body.docs[0].should.have.property('minorPriceEAN',"R$ 2.498,00");
+				// offer product
+				res.body.docs[0].product.should.have.property('_id',"58c91e9bbcbc89ad4abf5823");
+				done();
+		});
+	});
 
 });
 
