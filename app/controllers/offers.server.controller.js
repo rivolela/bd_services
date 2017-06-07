@@ -388,7 +388,7 @@ exports.listByEan = function(req,res){
 		ean:ean,
 	})
 	.group({ 
-		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
+		_id: {ean:'$ean',advertiser:"$advertiser"},
 		offer_id: { $first: "$_id" },
 		merchantProductId: { $first: "$merchantProductId" },
 		name: { $first: "$name" },
@@ -401,7 +401,9 @@ exports.listByEan = function(req,res){
 		totalReviews: { $first: "$totalReviews" },
 		price: { $first: "$price" },
 		price_display: { $first: "$price_display" },
+		minorPriceEAN: { $first: "$minorPriceEAN" },
 		url: { $first: "$url" },
+		totalOffers:{$sum:1},
 	}).sort({
     	price: 1
 	});
