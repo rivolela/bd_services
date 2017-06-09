@@ -483,7 +483,7 @@ exports.listByCategory = function(req,res){
 		$and:[{categoryBD:category,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
+		_id: {ean:'$ean'},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
