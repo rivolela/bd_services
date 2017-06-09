@@ -248,7 +248,7 @@ exports.search = function(req,res){
 		}]
 	})
 	.group({ 
-		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
+		_id: {ean:'$ean'},
 		 // { day: { $dayOfYear: "$date"}, year: { $year: "$date" } },
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
@@ -588,7 +588,7 @@ exports.listByDepartament = function(req,res){
 		$and:[{departamentBD:departament,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: {merchantProductId:'$merchantProductId',advertiser:"$advertiser"},
+		_id: {ean:'$ean'},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
@@ -692,7 +692,7 @@ exports.listByBrand = function(req,res){
 		$and:[{manufacturer: { $regex : new RegExp(brand, "i") } ,product:{$ne:null}}],
 	})
 	.group({ 
-		_id: {ean:'$ean',advertiser:"$advertiser",minorPriceEAN:"$minorPriceEAN"},
+		_id: {ean:'$ean'},
 		offer_id: { $first: "$_id" },
 		name: { $first: "$name" },
 		ean: { $first: "$ean" },
