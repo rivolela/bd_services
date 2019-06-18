@@ -1,2 +1,2 @@
 # bd_services
-API services from Decidaki (the product was finished)
+services API from Decidaki (the product was finished)
